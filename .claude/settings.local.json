@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import openpyxl; print\\(''openpyxl:'', openpyxl.__version__\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python -c \":*)",
+      "Bash(python output/test-data/generate_tx.py)",
+      "Bash(python output/test-data/_gen_tx.py)",
+      "Bash(pip list:*)",
+      "Bash(python \"output/request-bodies/TX/_gen_scenarios.py\")",
+      "Bash(dotnet --version)",
+      "Bash(dotnet test:*)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/surajk/OneDrive - BOLT Solutions/Desktop/AI Agent Resourse/hoa-agent/**)",
+      "Bash(done)",
+      "Bash(python -c \"import openpyxl; print\\(''openpyxl OK''\\)\")",
+      "Bash(python output/reports/_validate_tx.py)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

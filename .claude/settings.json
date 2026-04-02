@@ -1,0 +1,15 @@
+{
+  "model": "claude-opus-4-6",
+  "permissions": {
+    "allow_bash": true,
+    "allow_file_write": true,
+    "allow_file_read": true
+  },
+  "context": {
+    "include": [
+      "CLAUDE.md",
+      "skills/**/*.md",
+      "docs/**/*.md"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Baseurl": "developer.bolttest.com",
+  "X-Api-Key": {
+    "PersonalLine": {
+      "Unify": {
+        "MarketsLib": "y7whKFyZqbiq9Sp0WRS404yv8amYeDj3Xr9Oe22b",
+        "GuaranteedRate": ""
+      },
+      "LibertyX": {
+        "Test": ""
+      }
+    },
+    "CommercialLine": {
+      "Unify": {
+        "MarketsLib": ""
+      }
+    }
+  }
+}

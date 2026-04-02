@@ -1,0 +1,4 @@
+﻿{
+  "QA": "API Collection\\EnvironmentConfig\\QA.json",
+  "UAT": "API Collection\\EnvironmentConfig\\UAT.json"
+}

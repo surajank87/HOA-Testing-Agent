@@ -1,0 +1,378 @@
+{
+  "Products": [
+    "PersonalHome",
+    "PersonalAuto"
+  ],
+  "Data": {
+    // StartPage
+    "PropertyAddress": {
+      "ZipCode": "85658",
+      "State": "AZ",
+      "AddressLine2": "123",
+      "County": "PIMA",
+      "City": "Marana",
+      "AddressLine1": "14462 N Saguaro Nest Trl"
+    },
+    "FirstName": "TESTA",
+    "MiddleName": "M",
+    "LastName": "TESTB",
+    "DateOfBirth": "1994-09-15",
+    // HomePage
+    "PLYearBuilt": 1972,
+    "PLSquareFootage": 1075,
+    "ArchitectureStyle": "Ranch",
+    "PLTypeOfDwelling": "SingleFamilyHouse",
+    "PurchaseDate": "2010-03-04",
+    "PurchasePrice": 100000,
+    "OccupancyType": "OwnerPrimary",
+    "HomeUnderConstruction": false,
+    "ShortTermRental": false,
+    "MonthsUnoccupied": 0,
+    "NumberOfChildernsUnder18": 0,
+    "PL_Houseoccup": 3,
+    "NonSmoker": false,
+    "NumberOfDogsOnPremises": 0,
+    "ViciousExoticAnimals": false,
+    "BusinessOrDaycare": false,
+    "UnderMajorRenovation": false,
+    "SinkholeInvestigationOrClaim": false,
+    "NumOfDwelling": 1,
+    "DistanceToFireHydrant": "_501_1000ft",
+    "DistanceToFireStation": "Over5miles",
+    "InsideCityLimits": true,
+    "InCitySuburbDistrict": "City",
+    "HomeVisibleToNeighbors": true,
+    "GatedOrLimited": false,
+    "LimitedAccessCommunity": false,
+    "DistanceToCoast": 245,
+    "DistanceToCoastFeet": 167,
+    // Structure Page
+    "ConstructionQuality": "Average",
+    "PLConstructionType": "Masonry",
+    "TypeOfFoundation": "Basement",
+    "BasementType": "Basement",
+    "CrawlSpaceEncType": "Open",
+    "ElevatedFoundation": "ElevatedWithEnclosure",
+    "PLNumberOfStories": "One",
+    "PLNumberOfUnits": 1,
+    "PLNumberOfUnitsInFirewall": 1,
+    "PL_NumOfFamilies": 1,
+    "ExteriorWallsConstruction": "SolidBrickConstruction",
+    "RoofType": "COMPOSITION",
+    "MitRoofShape": "B_Gable",
+    "PLRoofUpdated": "CompleteUpdate",
+    "RoofUpdatedYear": 2022,
+    "StormShutters": false,
+    //MitCreditForm
+    //MitWindowOpening
+    //MitRoofCover
+    //MitRoofDeck
+    //MitRoofWall
+    //MitSecWaterResis
+    //MitDateOfInspection
+    // Features Page
+    "PL_AdditionalStructures_Garage": true,
+    "PL_AdditionalStructures_Pool": true,
+    "PL_AdditionalStructures_Trampoline": true,
+    "TypeGarageCarport": "Attached",
+    "PL_NumberCarSpace": 1,
+    "PL_PoolType": "Inground",
+    "PL_PoolFeatures_DivingBoard": true,
+    "PL_PoolFeatures_Slide": true,
+    "PL_PoolFeatures_4ftFence": true,
+    "RemovableLockableLadder": true,
+    "PLHeatingType": "GasForcedAir",
+    "OilTankLocation": "AboveGround",
+    "PlumbingType": "EntirelyCopper",
+    "SupplementalHeating": 0,
+    "UndergroundFuelTank": false,
+    "HeatingUpdateYN": true,
+    "PlumbingUpdateYN": true,
+    "ElectricalUpdateYN": true,
+    "PLHeatingUpdate": "CompleteUpdate",
+    "HeatingUpdateYear": 2022,
+    "PLPlumbingUpdated": "CompleteUpdate",
+    "PlumbingUpdatedYear": 2022,
+    "PLElectricalUpdated": "CompleteUpdate",
+    "ElectricalUpdatedYear": 2022,
+    "ElectricCircuitBreaker": true,
+    "FireDetection": true,
+    "BurglarAlarm": true,
+    "SmokeDetector": true,
+    "SprinklerSystem": true,
+    "DeadBoltLocks": true,
+    "FireExtinguisher": true,
+    "FireDetectionType": "Local",
+    "BurglarAlarmType": "Local",
+    "SprinklerSystemType": "Full",
+    "SmokeDetectorType": "Central",
+    // Vehicle Page
+    "PersonalVehicles": [
+      {
+        "Id": "8770aa7f-d463-447e-ab24-85f55f9476d5",
+        "SequenceNum": 0,
+        // "MainDriverId": "f159eaec-bfaf-4af9-9cc6-6213f9709daa",
+        "VIN": "3GCUKREC8HG365858",
+        "PLYear": 2017,
+        "PLMake": "CHEVROLET",
+        "PLModel": "SILVERADO K1500 LT",
+        "BodyStyle": "PICKUP 4 4x4 5.3L 8L OHV 16V",
+        "OwnershipType": "Lien",
+        "PrimaryUseOfVehicle": "Pleasure",
+        "MilesToWork": 800,
+        "NumberOfMiles": 9000,
+        "CurrentOdometer": 45000,
+        "WasTheCarNew": false,
+        "DateVehiclePurchased": "2023-11-17",
+        "CostNewValue": 42905,
+        //"CurrentMarketValue": 100000,
+        "AntiLockBrakes": true,
+        "DaytimeRunningLights": true,
+        "AntiTheft": "AlarmOnly",
+        "PassiveRestraints": "AirbagBothSides",
+        "AnyModifications": true,
+        "ModificationsValue": "100000",
+        "GarageAddressDifferent": false,
+        "PersonalVehicleGarageAddress": {
+          "AddressLine1": "4141 N 104th Dr",
+          "AddressLine2": "Apt709",
+          "ZipCode": "85037",
+          "City": "Phoenix",
+          "State": "AZ",
+          "County": ""
+        },
+        "CompDeductible": "NoCoverage",
+        "CollDeductible": "NoCoverage",
+        "TowingAndLabor": "NoCoverage",
+        "TransportationExpense": "NoCoverage",
+        "Collision": "Regular",
+        "MALimCollDed": "No_Coverage",
+        "MAWaivCollDed": false,
+        "FullGlass": false,
+        "LoanLease": false,
+        "Assignments": [
+          {
+            "Id": "f159eaec-bfaf-4af9-9cc6-6213f9709daa",
+            "SequenceNum": 0,
+            "Percent": 100,
+            "DriverId": "f159eaec-bfaf-4af9-9cc6-6213f9709daa"
+          }
+        ]
+      }
+    ],
+    // Operators Page
+    "Drivers": [
+      {
+        "Id": "9170be56-1bbe-49bf-b3e9-fc3584e714fc",
+        "DriverRelationshipToDriver1": "Spouse",
+        "DriverStateLicensed": "AZ",
+        "IsGoodStudent": false,
+        "HasAutoLosses": false,
+
+        "Accidents": [
+          {
+            "Id": "c9a3fb33-0cf3-40a1-943d-7ed9f1d43289",
+            "AccidentPDAmount": 12000,
+            "AccidentBIAmount": 12000,
+            "SequenceNum": 0,
+            "DateOfAccident": "2020-06-06",
+            "AccidentVehicleInvolved": "1",
+            "Description": "AtFaultWithNoInjury",
+            "PersonalInjuryAmount": 10000
+          }
+        ],
+        "DriverLicenseNumber": "3367EFSFSKFSK2F",
+        "MaritalStatus": "Married",
+        "Losses": [
+          {
+            "Id": "837dc16e-18a6-4db9-b576-28a7cc705f1d",
+            "AutoLossesDate": "2021-10-10",
+            "AutoLossesDescription": "Glass",
+            "AutoLossesAmount": 9000,
+            "SequenceNum": 0,
+            "AutoLossesVehicleInvolved": "1"
+          }
+        ],
+        "FirstName": "SaTT",
+        "MiddleName": "M",
+        "LastName": "YaTT",
+        // "MainVehicleId": "80edb18c-d867-44de-a672-d80fc5ac7944",
+        "DriverLicenseStatus": "Valid",
+        "DriverSSN": "793-49-4923",
+        "DefensiveDriverCourseDate": "2016-01-01",
+        "HasViolations": false,
+        "SequenceNum": 0,
+        "DriverEmploymentIndustry": "Lgl/Law Enfcmt/Sec",
+        "DriverOccupationStr": "Mgr/Supervisr-Offic",
+
+        "Violations": [
+          {
+            "Id": "f6ffab04-0c9c-4495-a4a7-c38e2ca988a2",
+            "SequenceNum": 0,
+            "DateOfViolation": "2021-02-02",
+            "Description": "FailuretoObeySignal"
+          }
+        ],
+        "SR22OrFinancialResponsibilityStatement": false,
+        "DriverEducation": "HighSchoolDiploma",
+        "HasAccidents": false,
+        "Gender": "Male",
+        "OperatorType": [
+          "AutoDriver"
+        ],
+        "DOB": "1994-09-15",
+        "DriverDateLicensed": "2014-01-01",
+        "IsDefensiveDriver": true,
+        "DriversLicenseBeenSuspendedOrRevoked": false,
+        "IsDrv2RegisterOwner": true
+      }
+    ],
+    "HalfBathNum": 0,
+    "PersonalPropertyRC": true,
+    "THDFForm": "D1",
+    "NumberofAcres": 0.21,
+    "EmploymentIndustry": "Lgl/Law Enfcmt/Sec",
+    "PersonalLineGender": "Male",
+    "ActualCashValue": 124000,
+    "MaritalStatus": "Married",
+    "PredominantAutoState": "AZ",
+    "PL_CentralAC": true,
+    "FullBathNum": 1,
+    "QuoteName": "MRKT",
+    "GasLeak": true,
+    "IsForeignAddress": false,
+
+    // Policy 
+    "EffectiveDate": "2024-11-30",
+    "TypeOfResidence": "OwnHome",
+    "AutoHomeInsurance": true,
+    "CurrentPersonalHomeownerCarrier": "OtherStandard",
+    "CurrentPersonalAutoCarrier": "Farmers",
+    "SelectReasonNoPriorAutoInsurance": "ActiveMilitaryDuty",
+    "YearsWithPriorCarrierAuto": 2,
+    "MonthsWithPriorCarrierAuto": 3,
+    "YearsWithContinuousCoverageAuto": 4,
+    "PriorCarrierExpirationDateAuto": "2024-10-20",
+    "ReasonForLapse": "ActiveMilitaryDuty",
+    "CurrentAutoAnnualPremium": 1560,
+    "SelectPriorLiabilityLimitsAuto": "FiftyToHundred",
+    "AutoInsuranceCancelled": false,
+    // Policy Home
+    "SelectReasonNoPriorHomeInsurance": "FirstTimeHomeowner",
+    "YearsWithPriorCarrierHome": 10,
+    "YearsWithContinuousCoverageHome": 10,
+    "PriorCarrierExperationDate": "2024-09-15",
+    "LapseInCoverage": false,
+    "PriorLiabilityCoverageHome": "LessthanThreehundredthousand",
+    "PropertyInsuranceCancelled": false,
+    "NumberOfMortgagees": 0,
+    "PLHaveAnyLosses": false,
+    "PersonalLosses": [
+      {
+        "Id": "3685a0dd-7da4-4adf-ae44-f4cfa8dc193d",
+        "SequenceNum": 0,
+        "PLLossDescription": "FIRE",
+        "DateOfLoss": "2019-04-06",
+        "PersonalLineLossAmount": 16000
+      }
+    ],
+    "PersonalLineReplacementCost": 290000,
+    "PLOtherStructures": 29000,
+    "PLPersonalProperty": 145000,
+    "LossOfUse": 87000,
+    "PLPersonalLiability": "Fifty",
+    "DwellingMedicalPayments": "cov3000",
+    "PLAllPerilsDeductible": "OneThousand",
+    "AnnualHurricaneDed": "FiveHundred",
+    "WindstormDeductible": "TwoPercent",
+    "HomeAutoInsurance": "true",
+
+    //Auto Coverages
+    "BI": "cov50to100",
+    "UM": "cov50to100",
+    "UIM": "cov50to100",
+    "StackedUM": false,
+    "StackedUIM": false,
+    "UMUIM": "cov50to100", //(only for NC)
+    "UMUIMConversion": "false", // (Only for CT)
+    "PD": "cov50000",
+    "MP": "None",
+    "UMPD": "NoCoverage",
+    "UIMPD": "e5000",
+    //"UMOPTION": "AddOn", // (only for GA)
+    "PIP": "cov5000",
+    "PIPDeductible": "cov500",
+    "PIPStacking": false, // only for MN
+    "PIPOption": "Basic", // only for MN,NY
+    "MIPIPLimit": "Unlimited",
+    "LimitedPropertyDamage": "cov3000", // only for MN,NY
+    "PIPAttendantCare": "NoCoverage", // Only for MI
+    "AdditionalPIP": "No_Coverage", // only for DE,KY,NJ,WA
+    "PIPApplies": "Named_Insured", // only for DE,FL
+    "HealthCare": "Primary", // only for NJ
+    "ExtendedMedical": "cov1000", // only for NJ
+    "WageLoss": "cov200", // only for CT,FL,HI
+    "WorkLoss": "cov12000",
+    "AccidentalDeath": "None", // AR,HI,PA
+    "BRBLimit": "None", // Only for CT
+    "MedicalExpense": "cov1000", // only for DC
+    "FuneralExpense": "cov1500", // only for DC,HI,PA
+    "TortThreshold": "Verbal_Threshold", // only for NJ,PA
+    "Tortlimitation": "TortLimitationNotRejected", // only for KY
+    "OptionalBI": "cov20_40", // only for MA
+    "FirstPartyBenefits": "AddlFirstPartyBenefits", // only for PA
+    "FirstParty": "cov5000", // only for PA
+    "AutoDeathIndemnity": "cov5000", //only for NC,SD,TX
+    "IncomeLoss": "ACCEPT", // only for VA
+    "TotalDisability": "InsuredAndSpouse", // only for SD
+    "ExtraMedicalExp": "cov100000", // only for PA
+    "Obel": false, // only for NY
+    "AdditionalDeath": false, // only for NY
+    "SupplementalSpousalLiability": false, // only for NY
+    "PIPWorkLossWaiver": false, // only for MI
+    // Applicant
+    //SSN
+    //PersonalLineGender
+    //MaritalStatus
+    "Email": "FNFFLNHtagfasfsfestH@epos.com",
+    "PrimaryPhoneNumber": "225-036-0515",
+    "OccupationStr": "Mgr/Supervisr-Offic",
+    "YearsAtAddress": 0,
+    "MonthsAtAddress": 10,
+    "PreviousAddress": {
+      "AddressLine1": "14462 N Saguaro Nest Trail",
+      "ZipCode": "85658",
+      "County": "PIMA",
+      "City": "MARANA",
+      "State": "AZ",
+      "AddressLine2": "678",
+      "YearsAtAddress": 20
+    },
+    "IsMailAddress": true,
+    "MailingAddress": {
+      "State": "AZ",
+      "City": "Tucson",
+      "County": "PIMA",
+      "AddressLine1": "5421 Pso Espejo",
+      "AddressLine2": "893",
+      "ZipCode": "85718"
+    },
+    //MultiPolicyDiscountProducts
+    "AnyAdditionalInsured": true,
+    "CoFirstName": "SaTT",
+    //CoMiddleName
+    "CoLastName": "YaTT",
+    //CoSSN
+    "CoPersonalLineGender": "Female",
+    "CoMaritalStatus": "Married",
+    "SelectRelationshipToClient": "Spouse",
+    "CoDateOfBirth": "1994-02-05",
+    "CoEmploymentIndustry": "Business/Sales/Offi",
+    "CoOccupationStr": "Mgr/Supervisr-Offic",
+    "CreditCheckPermission": true,
+    "ForeclosureOrRepossessionOrBankruptcy": false,
+    "InsuranceFraud": false
+    //IssuedCorporationOrTrustInd(only for NC state)
+    //HealthInsCoversAutoAccident(only for NJ state)
+  }
+}

@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title></title>
+ <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/commons/img/logo.png">
+ <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/commons/img/logo.png">
+ <link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@78fa5a2421587b8228150e93142e5ba97178e85b/spark/css/spark-style.css" rel="stylesheet" />
+ <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@78fa5a2421587b8228150e93142e5ba97178e85b/spark/js/jsontree.js"></script>
+ <style></style>
+</head>
+<body class="spa  standard">
+ <div class="app">
+  <div class="layout">
+   <div class="header navbar">
+ <div class="vheader">
+  <div class="nav-logo">
+   <a href="#">
+	 <div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c43b89d03a7c43dae8bb8f0f078bad1997af6b3b/commons/img/logo.png')"></div>
+   </a>
+  </div>
+  <ul class="nav-left">
+   <li class="search-box">
+	<a class="search-toggle" href="#"><i class="search-icon fa fa-search"></i><i class="search-icon-close fa fa-close"></i></a>
+   </li>
+   <li class="search-input">
+    <input id="search-tests" class="form-control" type="text" placeholder="Search...">
+   </li>
+  </ul>
+  <ul class="nav-right">
+   <li class="m-r-10"><a href="#"><span class="badge badge-primary">Test Execution Report</span></a></li>
+   <li class="m-r-10">
+    <a href="#"><span class="badge badge-primary">9/25/2025 1:11:39 PM</span></a>
+   </li>
+  </ul>
+ </div>
+</div>
+   <div class="side-nav">
+ <div class="side-nav-inner">
+  <ul class="side-nav-menu">
+   <li class="nav-item dropdown" onclick="toggleView('test-view')">
+    <a id="nav-test" class="dropdown-toggle" href="#">
+     <span class="ico"><i class="fa fa-list"></i></span>
+    </a>
+   </li>
+   <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+    <a id="nav-dashboard" class="dropdown-toggle" href="#">
+     <span class="ico"><i class="fa fa-bar-chart"></i></span>
+    </a>
+   </li>
+  </ul>
+ </div>
+</div>
+
+   <div class="vcontainer">
+    <div class="main-content">
+     
+
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+      <ul class="tools pull-left">
+        <li><a href="#"><span class="font-size-14">Tests</span></a></li>
+      </ul>
+      <ul class="tools text-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+          <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+ <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>             <div class="dropdown-divider"></div>
+            <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item" status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">DataSet_NM_001</p>
+            <p class="text-sm">
+              <span>1:11:46 PM</span> / <span>48937.99 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">DataSet_NM_001</h5>
+                  <span class='badge badge-success'>9/25/2025 1:11:46 PM</span>
+                  <span class='badge badge-danger'>9/25/2025 1:12:35 PM</span>
+                  <span class='badge badge-default'>48937.99 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>4.53</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="2">Default Request Updated with Below Data</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Sep 25, 2025 13:11:46</td>
+        <td>
+<table class='table table-sm'><tr><td>Field Name</td><td>Value</td></tr><tr><td>PropertyAddress.AddressLine1</td><td>5032 Bedford Ave</td></tr><tr><td>PropertyAddress.AddressLine2</td><td>Apt102</td></tr><tr><td>PropertyAddress.ZipCode</td><td>55436</td></tr><tr><td>PropertyAddress.City</td><td>Edina</td></tr><tr><td>PropertyAddress.State</td><td>NM</td></tr><tr><td>FirstName</td><td>TestA</td></tr><tr><td>MiddleName</td><td>M</td></tr><tr><td>LastName</td><td>TestB</td></tr><tr><td>DateOfBirth</td><td>1974-09-09</td></tr><tr><td>PersonalVehicles[0].VIN</td><td>3GCUKREC8HG365858</td></tr><tr><td>PersonalVehicles[0].PLYear</td><td>2017</td></tr><tr><td>PersonalVehicles[0].PLMake</td><td>CHEVROLET</td></tr><tr><td>PersonalVehicles[0].PLModel</td><td>SILVERADO K1500 LT</td></tr><tr><td>PersonalVehicles[0].PrimaryUseOfVehicle</td><td>Business</td></tr><tr><td>PersonalVehicles[0].NumberOfMiles</td><td>1000</td></tr><tr><td>PersonalVehicles[0].DateVehiclePurchased</td><td>2018-02-02</td></tr><tr><td>PersonalVehicles[0].CostNewValue</td><td>1200</td></tr><tr><td>PersonalVehicles[0].AntiLockBrakes</td><td>TRUE</td></tr><tr><td>PersonalVehicles[0].DaytimeRunningLights</td><td>TRUE</td></tr><tr><td>PersonalVehicles[0].PassiveRestraints</td><td>None</td></tr><tr><td>PersonalVehicles[0].GarageAddressDifferent</td><td>TRUE</td></tr><tr><td>PersonalVehicles[0].PersonalVehicleGarageAddress.AddressLine1</td><td>112 Yucca Dr</td></tr><tr><td>PersonalVehicles[0].PersonalVehicleGarageAddress.AddressLine2</td><td>Apt101</td></tr><tr><td>PersonalVehicles[0].PersonalVehicleGarageAddress.ZipCode</td><td>88130</td></tr><tr><td>PersonalVehicles[0].PersonalVehicleGarageAddress.City</td><td>Portales</td></tr><tr><td>PersonalVehicles[0].PersonalVehicleGarageAddress.State</td><td>NM</td></tr><tr><td>Drivers[0].FirstName</td><td>TestA</td></tr><tr><td>Drivers[0].MiddleName</td><td>M</td></tr><tr><td>Drivers[0].LastName</td><td>TestB</td></tr><tr><td>Drivers[0].DOB</td><td>1974-09-09</td></tr><tr><td>Drivers[0].DriverSSN</td><td>555-55-5555</td></tr><tr><td>Drivers[0].Gender</td><td>Male</td></tr><tr><td>Drivers[0].MaritalStatus</td><td>Single</td></tr><tr><td>Drivers[0].DriverEducation</td><td>NoHighSchoolDiploma</td></tr><tr><td>Drivers[0].DriverEmploymentIndustry</td><td>Education/Library</td></tr><tr><td>Drivers[0].DriverOccupationStr</td><td>Admin Assist</td></tr><tr><td>Drivers[0].DriverLicenseStatus</td><td>Valid</td></tr><tr><td>Drivers[0].DriverLicenseNumber</td><td>S2018016</td></tr><tr><td>Drivers[0].DriverStateLicensed</td><td>MD</td></tr><tr><td>Drivers[0].DriverDateLicensed</td><td>2016-02-02</td></tr><tr><td>Drivers[0].IsDefensiveDriver</td><td>TRUE</td></tr><tr><td>Drivers[0].DefensiveDriverCourseDate</td><td>2020-02-07</td></tr><tr><td>Drivers[0].HasAccidents</td><td>FALSE</td></tr><tr><td>Drivers[0].HasViolations</td><td>FALSE</td></tr><tr><td>Drivers[0].HasAutoLosses</td><td>FALSE</td></tr><tr><td>EffectiveDate</td><td>2025-10-12</td></tr><tr><td>TypeOfResidence</td><td>OwnHome</td></tr><tr><td>CurrentPersonalAutoCarrier</td><td>NoPriorInsurance</td></tr><tr><td>BI</td><td>Dontknow</td></tr><tr><td>UM</td><td>cov50to100</td></tr><tr><td>StackedUM</td><td>TRUE</td></tr><tr><td>UIM</td><td>cov50to100</td></tr><tr><td>PD</td><td>Dontknow</td></tr><tr><td>MP</td><td>None</td></tr><tr><td>UMPD</td><td>NoCoverage</td></tr><tr><td>PersonalVehicles[0].CompDeductible</td><td>NoCoverage</td></tr><tr><td>PersonalVehicles[0].CollDeductible</td><td>NoCoverage</td></tr><tr><td>PersonalVehicles[0].TowingAndLabor</td><td>NoCoverage</td></tr><tr><td>PersonalVehicles[0].TransportationExpense</td><td>NoCoverage</td></tr><tr><td>PersonalVehicles[0].FullGlass</td><td>FALSE</td></tr><tr><td>PersonalVehicles[0].LoanLease</td><td>FALSE</td></tr><tr><td>Email</td><td>test@epos.com</td></tr><tr><td>PrimaryPhoneNumber</td><td>567-783-7382</td></tr><tr><td>YearsAtAddress</td><td>4</td></tr><tr><td>MonthsAtAddress</td><td>2</td></tr><tr><td>IsMailAddress</td><td>TRUE</td></tr><tr><td>MailingAddress.AddressLine1</td><td>5 Cherryside Ct</td></tr><tr><td>MailingAddress.AddressLine2</td><td>Apt906</td></tr><tr><td>MailingAddress.ZipCode</td><td>72211</td></tr><tr><td>MailingAddress.City</td><td>Little Rock</td></tr><tr><td>MailingAddress.State</td><td>AR</td></tr><tr><td>SSN</td><td>555-55-5555</td></tr><tr><td>PersonalLineGender</td><td>Male</td></tr><tr><td>MaritalStatus</td><td>Single</td></tr><tr><td>CreditCheckPermission</td><td>TRUE</td></tr><tr><td>EmploymentIndustry</td><td>Education/Library</td></tr><tr><td>OccupationStr</td><td>Admin Assist</td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>1.81</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="3">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Sep 25, 2025 13:12:35</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>Cincinnati</td></tr><tr><td>LOB</td><td>PersonalAuto</td></tr><tr><td>Friendly Id</td><td>8720-1965-4317</td></tr><tr><td>Submission Status</td><td>TechnicalError</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Sep 25, 2025 13:12:35</td>
+        <td>
+Result Message        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Sep 25, 2025 13:12:35</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ResultMessageList>
+  <string>Unknown Error. Error Id: 638943829352913602</string>
+</ResultMessageList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="test-content scrollable">
+    <div class="test-content-tools">
+      <ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+    </div>
+    <div class="test-content-detail"><div class="detail-body"></div></div>
+  </div>
+</div>
+
+     
+
+<div class="container-fluid p-4 view dashboard-view">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0">Started</p>
+          <h3>9/25/2025 1:11:39 PM</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0">Ended</p>
+          <h3>9/25/2025 1:12:35 PM</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0 text-pass">Tests Passed</p>
+          <h3>0</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0 text-fail">Tests Failed</p>
+          <h3>1</h3>
+      </div></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Tests</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='parent-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'>
+            <b>0</b> tests passed
+            </small>
+          </div>
+          <div>
+            <small data-tooltip='1%'><b>1</b> tests failed, 
+            <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Steps</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='child-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'><b>1</b> steps passed</small></div>
+          <div>
+            <small data-tooltip='0%'><b>1</b> steps failed, 
+            <b>0</b> skipped, <b data-tooltip='%'>0</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Log events</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='events-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'><b>0</b> events passed</small></div>
+          <div>
+            <small data-tooltip='0%'><b>1</b> events failed, 
+            <b data-tooltip='%'>3</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
+<script>
+  var statusGroup = {
+    parentCount: 1,
+    childCount: 2,
+    grandChildCount: 0,
+    eventsCount: 4,
+
+passParent:0,failParent:1,warningParent:0,skipParent:0,    
+passChild:1,failChild:1,warningChild:0,skipChild:0,infoChild:0,    
+passGrandChild:0,failGrandChild:0,warningGrandChild:0,skipGrandChild:0,infoGrandChild:0,    
+passEvents:0,failEvents:1,warningEvents:0,skipEvents:0,infoEvents:3,  };
+</script>
+
+    </div>
+   </div>
+  </div>
+ </div>
+ <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/spark/js/spark-script.js"></script>
+<script type='text/javascript'></script>
+</body>
+</html>

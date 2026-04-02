@@ -1,0 +1,19 @@
+{
+  "Baseurl": "developer-qa.boltqa.com",
+  "X-Api-Key": {
+    "PersonalLine": {
+      "Unify": {
+        "MarketsLib": "rf0me9io7bn6doky62har96e5u5nsx4mx7lyty3c",
+        "GuaranteedRate": "75p03xi66ysg35v5n56fe62t9yk2nopwan15ysyr"
+      },
+      "LibertyX": {
+        "Test": "oM08PaZTsMygPaEBTzWHruwhsDgmBNj8bzFwUOev"
+      }
+    },
+    "CommercialLine": {
+      "Unify": {
+        "MarketsLib": "ghgkwki46vxall2jn5c3uxj6rjbyihk6phnnfeiy"
+      }
+    }
+  }
+}

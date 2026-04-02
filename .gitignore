@@ -1,0 +1,19 @@
+# Output files (regenerated each run)
+output/test-data/
+output/request-bodies/
+output/scenarios/
+output/results/
+output/reports/
+
+# Framework build artifacts
+framework/**/bin/
+framework/**/obj/
+framework/**/*.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vs/
+*.suo

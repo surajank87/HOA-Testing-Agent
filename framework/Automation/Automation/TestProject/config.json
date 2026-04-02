@@ -1,0 +1,10 @@
+{
+  "Tenant": "Unify",
+  "LOB": "PersonalHome",
+  "Carrier": "HOA",
+  "PersonalLineOrCommercialLine": "PersonalLine",
+  "Environment": "QA",
+  "SubTenant": "MarketsLib",
+  "CarrierRequestFormat": "xml",
+  "State": "TX"
+}

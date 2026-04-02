@@ -1,0 +1,139 @@
+{
+  "Products": [
+    "Renters"
+  ],
+  "Data": {
+    // Start Page
+    "PropertyAddress": {
+      "AddressLine1": "900 Laura Oaks Blvd",
+      "ZipCode": "34747",
+      "County": "OSCEOLA",
+      "City": "Kissimmee",
+      "State": "FL"
+    },
+    "FirstName": "Test",
+    "MiddleName": "G",
+    "LastName": "Testing",
+
+    // Home Page
+    "PLYearBuilt": 2015,
+    "PLSquareFootage": 1800,
+    "PLTypeOfDwelling": "SingleFamilyHouse",
+    "OccupancyType": "TenantPrimary",
+    "MonthsUnoccupied": 0,
+    "NonSmoker": true,
+    "NumberOfDogsOnPremises": 0,
+    "BusinessOrDaycare": false,
+    "DistanceToFireHydrant": "_0_500ft",
+    "DistanceToFireStation": "Lessthan5miles",
+    "InsideCityLimits": true,
+    "HomeVisibleToNeighbors": false,
+    "GatedOrLimited": false,
+    "DistanceToCoast": 56,
+
+    // Structure Page
+    "PLConstructionType": "Frame",
+    "PLNumberOfStories": "One",
+    "PLNumberOfUnits": 1,
+    "PL_NumOfFamilies": 1,
+    "RoofType": "ARCHITECTURAL_SHINGLES",
+    "MitRoofShape": "B_Gable",
+    "PLRoofUpdated": "CompleteUpdate",
+    "RoofUpdatedYear": 2024,
+    "MitCreditForm": true,
+    "MitWindowOpening": "HurricaneProtection",
+    "MitRoofCover": "FBCRoof",
+    "MitRoofDeck": "SixDAt612",
+    "MitRoofWall": "ToeNails",
+    "MitSecWaterResis": "SWR",
+    "MitDateOfInspection": "2022-09-09",
+
+    // Features Page
+    "PL_AdditionalStructures_Pool": true,
+    "PL_PoolType": "AboveGround",
+    "PL_PoolFeatures_DivingBoard": true,
+    "PL_PoolFeatures_Slide": true,
+    "PL_PoolFeatures_4ftFence": true,
+    "PLHeatingType": "Electric",
+    "HeatingUpdateYN": true,
+    "PlumbingUpdateYN": true,
+    "ElectricalUpdateYN": false,
+    "PLHeatingUpdate": "CompleteUpdate",
+    "HeatingUpdateYear": 2024,
+    "PLPlumbingUpdated": "CompleteUpdate",
+    "PlumbingUpdatedYear": 2024,
+    "PLElectricalUpdated": "CompleteUpdate",
+    "ElectricalUpdatedYear": 2024,
+    "ElectricCircuitBreaker": true,
+    "FireDetection": true,
+    "BurglarAlarm": true,
+    "SmokeDetector": true,
+    "SprinklerSystem": true,
+    "DeadBoltLocks": true,
+    "FireExtinguisher": true,
+    "FireDetectionType": "Central",
+    "BurglarAlarmType": "Direct",
+    "SprinklerSystemType": "Full",
+    "SmokeDetectorType": "Direct",
+
+    // Policy Page
+    "EffectiveDate": "2024-09-30",
+    "CurrentPersonalHomeownerCarrier": "TwentyFirstCentury",
+    "SelectReasonNoPriorHomeInsurance": "HasBeenRenting",
+    "YearsWithPriorCarrierHome": 4,
+    "YearsWithContinuousCoverageHome": 4,
+    "PriorCarrierExperationDate": "2024-09-30",
+    "PLHaveAnyLosses": false,
+    "PersonalLosses": [
+      {
+        "Id": "c44917c2-4d43-4bf3-886c-ec6d9e4334d1",
+        "PLLossDescription": "CONTAMINATION",
+        "PersonalLineLossAmount": 2000,
+        "SequenceNum": 0,
+        "DateOfLoss": "2021-09-09"
+      }
+    ],
+    "PLPersonalProperty": 40000,
+    "PLPersonalLiability": "OneHundred",
+    "DwellingMedicalPayments": "cov3000",
+    "PLAllPerilsDeductible": "OneThousand",
+    "AnnualHurricaneDed": "TwoPercent",
+    "HomeAutoInsurance": false,
+    "CurrentPersonalAutoCarrier": "TwentyFirstCentury",
+
+    // Applicant Page
+    "DateOfBirth": "1980-09-11",
+    "SSN": "456-23-8769",
+    "PersonalLineGender": "Male",
+    "MaritalStatus": "Single",
+    "Email": "test@epos.com",
+    "PrimaryPhoneNumber": "555-656-4564",
+    "EmploymentIndustry": "Art/Design/Media",
+    "OccupationStr": "Admini Assist",
+    "YearsAtAddress": 4,
+    "MonthsAtAddress": 6,
+    "IsMailAddress": true,
+    "MailingAddress": {
+      "AddressLine1": "113 E Tasher St",
+      "ZipCode": "46614",
+      "County": "ST JOSEPH",
+      "City": "South Bend",
+      "State": "IN"
+    },
+    "MultiPolicyDiscountProducts": [
+      "Renters"
+    ],
+    "AnyAdditionalInsured": true,
+    "CoFirstName": "ASDFG",
+    "CoMiddleName": "Y",
+    "CoLastName": "HHUIK",
+    "CoSSN": "899-23-4438",
+    "CoPersonalLineGender": "Female",
+    "CoMaritalStatus": "Single",
+    "SelectRelationshipToClient": "Spouse",
+    "CoDateOfBirth": "1981-06-03",
+    "CoEmploymentIndustry": "Art/Design/Media",
+    "CoOccupationStr": "Admin Assist",
+    "CreditCheckPermission": true
+  }
+}

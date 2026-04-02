@@ -1,0 +1,44 @@
+<Response>
+  <resMessages>
+    <messages>
+      <attributeErrors>
+        <attributeDisplayMessage>state is a required field</attributeDisplayMessage>
+        <attributeName>state</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>effectiveDate is a required field</attributeDisplayMessage>
+        <attributeName>effectiveDate</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>agentCode is a required field</attributeDisplayMessage>
+        <attributeName>Requestor.agentCode</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>requestID is a required field</attributeDisplayMessage>
+        <attributeName>Requestor.requestID</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>vendorCode is a required field</attributeDisplayMessage>
+        <attributeName>Requestor.vendorCode</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>requestDate is a required field</attributeDisplayMessage>
+        <attributeName>Requestor.requestDate</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>name is a required field</attributeDisplayMessage>
+        <attributeName>BusinessOwner.name</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>Business Structure / Organization Type is a required field</attributeDisplayMessage>
+        <attributeName>BusinessOwner.business.structure</attributeName>
+      </attributeErrors>
+      <attributeErrors>
+        <attributeDisplayMessage>description is a required field</attributeDisplayMessage>
+        <attributeName>BusinessOwner.business.description</attributeName>
+      </attributeErrors>
+      <errorCode>400</errorCode>
+      <displayMessage>We've encountered an issue. Please try again.</displayMessage>
+    </messages>
+  </resMessages>
+</Response>

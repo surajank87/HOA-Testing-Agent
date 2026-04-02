@@ -1,0 +1,88 @@
+{
+  "Products": [
+    "AUTO"
+  ],
+  "Data": {
+    "CLDrivers": [
+      {
+        "AutoIncidents": [
+          {
+            "AutoIncidentDate": "2023-05-10",
+            "AutoIncidentType": "Speeding11to15",
+            "Id": "8a777333-3a48-4eb8-8b1d-38e61e605410",
+            "SequenceNum": 0
+          }
+        ],
+        "OperatorFirstName": "John",
+        "CLOperatorLicenseState": "AK",
+        "ExcludedDriver": false,
+        "HasCommercialLicense": false,
+        "OperatorLastName": "Smith",
+        "OperatorDOB": "1998-01-01",
+        "OperatorMaritalStatus": "Single",
+        "OperatorGender": "Male",
+        "OperatorLicenseState": "IN",
+        "SR22Required": false,
+        "HasAutoIncidents": true,
+        "Id": "94a18560-c2b4-4f66-9b2c-59a4056dc6cc",
+        "SequenceNum": 0
+      }
+    ],
+    "Vehicles": [
+      {
+        "CL_LengthVehicleOwnership": "LessThanOneMonth",
+        "Radius": "Miles101To200",
+        "VIN": "JTDEPRAE4LJ022744",
+        "GarageLocation": {},
+        "CL_Comprehensive": "cov1000",
+        "CL_FullGlass": false,
+        "CL_Collision": "cov1000",
+        "CL_StatedAmount": 35000,
+        "CL_RoadSide": false,
+        "CL_TransportationExpense": "NoCoverage",
+        "CL_UMPD": "cov300",
+        "CL_UMPD_DED": true,
+        "CL_UMPD_DEDAmt": "cov250",
+        "PrimaryUseOfVehicle": "BusinessOnly",
+        "AverageDailyNumber": 10,
+        "HaulGoods": true,
+        "TypeOfVehicle": "CarPassenger",
+        "Id": "7135c82e-671d-4e13-97c3-baac10a761af",
+        "SequenceNum": 0
+      }
+    ],
+    "CL_BIPD": "cov750CSL",
+    "CL_MedPay": "cov500",
+    "CL_UM": "cov750CSL",
+    "CL_UIM": "cov750CSL",
+    "EffectiveDate": "2026-03-27",
+    "LegalEntity": "Corporation",
+    "OrganizationName": "John Pizza",
+    "FirstName": "John",
+    "LastName": "Amith",
+    "Email": "test55@epos.com",
+    "DateOfBirth": "1994-04-04",
+    "StartYear": 1989,
+    "PrimaryPhoneNumber": "888-865-4347",
+    "PropertyAddress": {
+      "AddressLine1": "123 main st",
+      "ZipCode": "46307",
+      "City": "Gary",
+      "State": "IN"
+    },
+    "MailingAddress": {
+      "AddressLine1": "123 main st",
+      "ZipCode": "46307",
+      "City": "Gary",
+      "State": "IN"
+    },
+    "IsMailAddress": false,
+    "HomeAutoInsurance": false,
+    "BoltIndustry": "49221002",
+    "OwnerInvolvedDailyOperations": false,
+    "GLBOPpolicy": true,
+    "RestaurantsDelivery": true,
+    "CreditCheckPermission": true,
+    "CurrentBopCarrier": "SelfInsured"
+  }
+}

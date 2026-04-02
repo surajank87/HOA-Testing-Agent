@@ -1,0 +1,7 @@
+<Response>
+  <Root>
+    <MESSAGE>Personal Property limit must be between $37,500.00 and $112,500.00.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response>
