@@ -9,6 +9,34 @@ Generate state-specific test data from the HOA requirement document.
 Example: `/generate-testdata TX`
 
 ## What this does
+
+### Step 0: Check for Existing Test Data
+
+Before generating, check if `output/test-data/HOA_HO3_{STATE}_TestData.xlsx` already exists:
+
+**Case 1 — Exists AND requirement doc unchanged:**
+- Compare the requirement doc's last-modified timestamp vs the test data file's timestamp
+- If requirement doc has NOT been modified since test data was generated → **SKIP generation**
+- Inform user: "Test data for {STATE} already exists and requirement doc hasn't changed. Reusing existing test data."
+
+**Case 2 — Exists BUT requirement doc has changes:**
+- Read existing test data AND current requirement doc
+- Diff field-by-field: identify added, removed, or modified Interview fields, List values, Defaults, Result Page items
+- **Incrementally update** only the changed items in the existing test data
+- Inform user with a summary:
+```
+📋 Requirement doc has changed since last test data generation.
+   Changes detected:
+   - Interview: {N} fields added, {M} fields modified, {K} fields removed
+   - Lists: {changes summary}
+   - Defaults: {changes summary}
+   Updated existing test data with these changes. All other data unchanged.
+```
+
+**Case 3 — Does NOT exist:**
+- Generate from scratch (normal flow below)
+
+### Steps 1-9: Full Generation (when needed)
 1. Reads the HOA requirement document: `carrier-docs/HOA (BriteCore) - HO3 - Standardization - V1.xlsx`
 2. Verifies the state is in scope (Scope sheet)
 3. Filters Interview sheet: ONLY fields with valid XPath (`/root/...`) AND relevant for target state

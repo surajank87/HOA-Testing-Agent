@@ -1,0 +1,7 @@
+<Response>
+  <Root>
+    <MESSAGE>Coverage: requiredDwellingAttributes | Roofs with structure type Slate are ineligible for coverage.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response>

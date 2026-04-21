@@ -1,7 +1,7 @@
 # Test Data Generator Skill
 
 ## Purpose
-Reads the HOA requirement document and generates a state-specific test data Excel workbook.
+Reads the HOA requirement document and generates a state-specific test data Excel workbook. Supports smart reuse — skips generation when test data already exists and requirement doc is unchanged, or incrementally updates when only a few things changed.
 
 ## Input
 - HOA requirement document: `carrier-docs/HOA (BriteCore) - HO3 - Standardization - V1.xlsx`
@@ -9,6 +9,42 @@ Reads the HOA requirement document and generates a state-specific test data Exce
 
 ## Output
 - `output/test-data/HOA_HO3_{STATE}_TestData.xlsx`
+
+---
+
+## SMART REUSE — Check Before Generating
+
+### Step 0: Check for Existing Test Data
+
+Before doing any generation work, check if `output/test-data/HOA_HO3_{STATE}_TestData.xlsx` already exists.
+
+**Case 1 — File exists AND requirement doc is unchanged:**
+- Compare the requirement doc file's last-modified timestamp against the test data file's timestamp
+- If the requirement doc has NOT been modified since the test data was created → **SKIP all generation**
+- Output: "Test data for {STATE} already exists and is up-to-date. Skipping generation."
+- Proceed to next pipeline step with existing test data
+
+**Case 2 — File exists BUT requirement doc has been modified:**
+- Read the EXISTING test data Excel
+- Read the CURRENT requirement doc
+- Diff the two, focusing on:
+  - **Interview sheet:** Any new fields added? Any fields removed? Any XPath, Mapping, List, or State column changes?
+  - **Lists sheet:** Any new values added? Any values removed? Any Enum or Mapping changes?
+  - **Defaults and Extras:** Any new defaults? Any value or condition changes?
+  - **Result Page Coverages/Details:** Any changes?
+- **Incrementally update** the existing test data with ONLY the changes
+- Report to user:
+```
+Requirement doc has been updated. Changes detected for {STATE}:
+  Interview: +{N} new fields, ~{M} modified fields, -{K} removed fields
+  Lists: +{N} new values, ~{M} modified values, -{K} removed values
+  Defaults: {summary}
+  Result Page: {summary}
+Updated existing test data with these changes.
+```
+
+**Case 3 — File does NOT exist:**
+- Generate from scratch using the full process below
 
 ---
 

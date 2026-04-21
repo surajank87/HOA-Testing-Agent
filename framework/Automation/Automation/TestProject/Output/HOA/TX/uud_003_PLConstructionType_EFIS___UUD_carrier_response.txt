@@ -1,0 +1,7 @@
+<Response>
+  <Root>
+    <MESSAGE> Risks with the selected construction type are ineligible.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response>

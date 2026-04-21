@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOA Testing Agent — Pipeline Workflow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --orange: #d29922;
+            --red: #f85149;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .diagram-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .diagram-section h2 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .diagram-section .desc {
+            color: #8b949e;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+        .mermaid svg { max-width: 100%; }
+    </style>
+</head>
+<body>
+
+<h1>HOA Testing Agent — Pipeline Workflow</h1>
+<p class="subtitle">End-to-end testing automation for HOA (BriteCore) carrier on the Bolt insurance platform</p>
+
+<div class="diagram-section">
+    <h2>Full Pipeline Flow (<code>/full-pipeline {STATE}</code>)</h2>
+    <p class="desc">Complete end-to-end execution with all decision points, user interactions, and smart reuse checks.</p>
+    <div class="mermaid">
+%%{init: {'theme': 'dark', 'themeVariables': {'fontSize': '13px'}}}%%
+flowchart TD
+    START(["🚀 /full-pipeline {STATE}"]) --> VALIDATE_STATE{"State supported<br/>in Scope sheet?"}
+    VALIDATE_STATE -->|No| ABORT["❌ State not supported"]
+    VALIDATE_STATE -->|Yes| ASK_MODE{"Ask User:<br/>Testing Mode?"}
+    ASK_MODE -->|Focused| FOCUS_INPUT["User describes<br/>affected areas"]
+    ASK_MODE -->|Overall| ASK_TYPES
+    FOCUS_INPUT --> ASK_TYPES{"Ask User:<br/>Testing Types?"}
+    ASK_TYPES --> CREATE_RUN["Create run folder<br/>{STATE}_{YYYY-MM-DD}_{HH-MM-SS}"]
+
+    CREATE_RUN --> TD_CHECK{"Test data<br/>exists?"}
+    TD_CHECK -->|No| TD_GEN["⚡ Phase 1: Generate Test Data<br/>Read req doc → Filter by state<br/>→ Write Excel"]
+    TD_CHECK -->|Yes| TD_CHANGED{"Requirement doc<br/>changed?"}
+    TD_CHANGED -->|No| TD_REUSE["♻️ Reuse existing test data"]
+    TD_CHANGED -->|Yes| TD_UPDATE["🔄 Incremental update<br/>Only changed fields"]
+
+    TD_GEN --> RB_CHECK
+    TD_REUSE --> RB_CHECK
+    TD_UPDATE --> RB_CHECK
+
+    RB_CHECK{"Previous request<br/>bodies exist?"}
+    RB_CHECK -->|Yes| RB_ASK{"Ask User:<br/>Reuse or regenerate?"}
+    RB_CHECK -->|No| RB_GEN
+    RB_ASK -->|Reuse| RB_COPY["📋 Copy existing<br/>request bodies"]
+    RB_ASK -->|Regenerate| RB_GEN
+
+    RB_GEN["⚡ Phase 2: Generate Request Bodies<br/>Load test data + sample request<br/>→ Combinatorial optimization<br/>→ Write JSON scenarios"]
+
+    RB_COPY --> EXEC
+    RB_GEN --> EXEC
+
+    EXEC["⚡ Phase 3: Run Tests<br/>Clear old → Copy JSONs to framework<br/>→ Update config.json<br/>→ dotnet test"]
+    EXEC --> MONITOR["⏳ Monitor Progress<br/>Count *_details.json files<br/>Display: 5/25 completed..."]
+    MONITOR --> COLLECT["📦 Collect Results<br/>Copy output → Format XML"]
+    COLLECT --> VALIDATE["⚡ Phase 4: Validate<br/>Auto-detect type by prefix<br/>→ XPath extraction<br/>→ Compare expected vs actual"]
+    VALIDATE --> EVIDENCE{"Any FAIL<br/>items?"}
+    EVIDENCE -->|Yes| BUG_EVIDENCE["🐛 Collect Bug Evidence<br/>Requirement + Request + Response"]
+    EVIDENCE -->|No| REPORT
+    BUG_EVIDENCE --> REPORT["📊 Generate Reports<br/>HTML Dashboard + Excel Summary"]
+    REPORT --> DONE(["✅ Pipeline Complete"])
+
+    style START fill:#238636,stroke:#3fb950,color:#fff
+    style DONE fill:#238636,stroke:#3fb950,color:#fff
+    style ABORT fill:#da3633,stroke:#f85149,color:#fff
+    style TD_GEN fill:#1f3a2d,stroke:#3fb950
+    style RB_GEN fill:#1f3a2d,stroke:#3fb950
+    style EXEC fill:#1f3a2d,stroke:#3fb950
+    style VALIDATE fill:#1f3a2d,stroke:#3fb950
+    style TD_REUSE fill:#2a2210,stroke:#d29922
+    style TD_UPDATE fill:#2a2210,stroke:#d29922
+    style RB_COPY fill:#2a2210,stroke:#d29922
+    style BUG_EVIDENCE fill:#3b1d1d,stroke:#f85149
+    </div>
+</div>
+
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#1f6feb',
+            primaryTextColor: '#c9d1d9',
+            primaryBorderColor: '#30363d',
+            lineColor: '#58a6ff',
+            secondaryColor: '#161b22',
+            tertiaryColor: '#0d1117',
+            fontFamily: 'Segoe UI, system-ui, sans-serif'
+        },
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis'
+        }
+    });
+</script>
+
+</body>
+</html>

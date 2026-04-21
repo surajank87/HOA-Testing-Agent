@@ -11,8 +11,8 @@ namespace CoreLogic
         // Replace the Username and Password with your actual Credentials
         // for policy viewer authentication
         #region Credentials
-        public readonly static string USERNAME = "surajk";
-        public readonly static string PASSWORD = "Thakur55$56";
+        public readonly static string USERNAME = "Enter Your Bolt Username";
+        public readonly static string PASSWORD = "Enter Your Bolt Passwrod";
         #endregion
     }
 }

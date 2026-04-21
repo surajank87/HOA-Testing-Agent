@@ -1,0 +1,7 @@
+<Response>
+  <Root>
+    <MESSAGE> Risk with the selected number of stories are ineligible.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response>

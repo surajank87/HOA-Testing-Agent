@@ -7,9 +7,9 @@
 A Claude Code agent running in VS Code that handles end-to-end testing for HOA (Homeowners of America) HO3 carrier on Bolt platform.
 
 **User provides:** Requirement document + target state
-**Agent delivers:** Test data Excel + graphical test results
+**Agent delivers:** Test data Excel + graphical test results with tabbed dashboard
 
-**Internally the agent:** creates test data → generates JSON request bodies → runs C# framework (send/retrieve) → validates request/response mapping → produces visual results
+**Internally the agent:** creates test data (with smart reuse) → asks user for testing mode & types → generates optimized JSON request bodies (combinatorial packing) → runs C# framework (send/retrieve) → validates per testing type → collects bug evidence → produces tabbed visual report
 
 ---
 
@@ -34,6 +34,8 @@ hoa-agent/
 │   │   └── SKILL.md                  # How to generate state-specific test data
 │   ├── request-body-generator/
 │   │   └── SKILL.md                  # How to generate JSON request bodies
+│   ├── relevancy-tester/
+│   │   └── SKILL.md                  # How to generate relevancy test cases
 │   └── result-validator/
 │       └── SKILL.md                  # How to validate request/response
 │
@@ -41,7 +43,7 @@ hoa-agent/
 │   └── HOA (BriteCore) - HO3 - Standardization - V1.xlsx
 │
 ├── sample-requests/                  # Sample request bodies from Postman (input, one per state)
-│   └── SampleRequestHOAIL.json      # IL sample — user provides per state
+│   └── SampleRequestHOA{STATE}.json
 │
 ├── framework/                        # C# automation framework (DO NOT MODIFY)
 │   └── Automation/Automation/
@@ -51,28 +53,40 @@ hoa-agent/
 │       ├── PolicyViewer/             # Selenium: PolicyViewer page objects
 │       ├── Utility/                  # JSON/XML readers, helpers, reporting
 │       └── TestProject/
-│           ├── config.json           # ← Agent updates this per state
-│           ├── RequestBodies/HOA/{STATE}/  # ← Agent puts scenario JSONs here
-│           ├── Output/HOA/{STATE}/         # ← Framework saves results here
-│           └── Execution Reports/{STATE}/  # ← Framework generates HTML reports
+│           ├── config.json           # Agent updates this per state
+│           ├── RequestBodies/HOA/{STATE}/  # Agent puts scenario JSONs here
+│           ├── Output/HOA/{STATE}/         # Framework saves results here
+│           └── Execution Reports/{STATE}/  # Framework generates HTML reports
 │
 ├── output/                           # Agent's output (delivered to user)
-│   ├── test-data/
+│   ├── test-data/                    # Persists across runs (smart reuse)
 │   │   └── HOA_HO3_{STATE}_TestData.xlsx
-│   ├── request-bodies/{STATE}/       # Generated JSON scenarios per state
-│   │   ├── req_001_base___Start.json
-│   │   ├── req_002_...___Home.json
-│   │   └── ...
-│   ├── scenarios/
-│   │   └── HOA_HO3_{STATE}_TestScenarios.xlsx
-│   ├── results/{STATE}/              # Copied from framework output
-│   │   ├── {scenario}_carrier_request.txt
-│   │   ├── {scenario}_carrier_response.txt
-│   │   ├── {scenario}_details.json
-│   │   └── {scenario}_request.json
-│   └── reports/
-│       ├── HOA_HO3_{STATE}_ValidationReport.html
-│       └── HOA_HO3_{STATE}_ValidationSummary.xlsx
+│   └── runs/                         # Timestamped run folders
+│       └── {STATE}_{YYYY-MM-DD}_{HH-MM-SS}/
+│           ├── request-bodies/       # JSON scenarios for this run
+│           │   ├── rel_001_...___Relevancy.json
+│           │   ├── crel_001_...___ConditionalRelevancy.json
+│           │   ├── map_001_...___Packed.json
+│           │   ├── res_001_...___ResultPage.json
+│           │   ├── uud_001_...___UUD.json
+│           │   └── def_001_...___Defaults.json
+│           ├── scenarios/
+│           │   ├── HOA_HO3_{STATE}_TestScenarios.xlsx
+│           │   └── TEST_CASE_GUIDE.md
+│           ├── results/              # Carrier request/response pairs
+│           │   ├── *_carrier_request.txt
+│           │   ├── *_carrier_request_formatted.xml
+│           │   ├── *_carrier_response.txt
+│           │   ├── *_carrier_response_formatted.xml
+│           │   └── *_details.json
+│           ├── evidence/             # Bug evidence (FAIL items only)
+│           │   ├── *_requirement.txt
+│           │   ├── *_request_actual.txt
+│           │   └── *_response_actual.txt
+│           ├── reports/
+│           │   ├── HOA_HO3_{STATE}_ValidationReport.html
+│           │   └── HOA_HO3_{STATE}_ValidationSummary.xlsx
+│           └── run-metadata.json
 │
 ├── docs/                             # Project documentation
 │   ├── project-context.md            # Domain knowledge & decisions
@@ -88,264 +102,227 @@ hoa-agent/
 
 ### CLAUDE.md (The Brain)
 
-This is the master instruction file. Claude Code reads this automatically. It contains:
+Master instruction file. Contains:
 - Agent identity and purpose
-- HOA carrier domain knowledge
-- The complete pipeline logic
-- Rules for test data generation, request body creation, and validation
-- How to interact with the C# framework
-- Output format specifications
+- **Testing modes** (Focused vs Overall) and **testing types** (Relevancy, Mapping, Result Page, UUD & Defaults)
+- **Combinatorial optimization** rules for packing multiple fields per request body
+- **Smart test data reuse** (skip/incremental update when requirement doc unchanged)
+- **Low-priority fields** and 15+ value threshold rules
+- **Request body reuse** check
+- **Bug evidence collection** rules for all 5 testing types
+- **Run folder convention** (timestamped folders)
+- **Validation rules** per testing type
+- Multi-carrier request body rules, state filtering, relevancy conditions
+- C# framework integration
 
 ### .claude/commands/ (Slash Commands)
 
-Each command triggers a specific phase of the pipeline:
-
 | Command | What It Does |
 |---|---|
-| `/generate-testdata {STATE}` | Reads HOA requirement doc → generates state-filtered test data Excel |
-| `/generate-requests {STATE}` | Reads test data + sample request → generates JSON scenario files |
-| `/run-tests {STATE}` | Copies JSONs to framework → updates config → triggers dotnet test → collects results |
-| `/validate {STATE}` | Reads results (request/response pairs) → validates mappings → generates report |
-| `/full-pipeline {STATE}` | Runs all 4 steps in sequence |
+| `/generate-testdata {STATE}` | Smart reuse check → generate/update/skip test data |
+| `/generate-requests {STATE}` | Ask mode + types → reuse check → generate packed JSON scenarios |
+| `/run-tests {STATE}` | Copy to framework → run with progress monitoring → format carrier XML |
+| `/validate {STATE}` | Auto-detect types by prefix → validate → collect evidence → tabbed report |
+| `/full-pipeline {STATE}` | All 4 steps with user configuration phase at the start |
 
-### skills/ (Skill Instructions)
+### skills/ (4 Skill Instructions)
 
-Each skill has a SKILL.md with detailed step-by-step instructions the agent follows:
-
-- **test-data-generator/SKILL.md:** State filtering, Interview/Lists sheet parsing, output format
-- **request-body-generator/SKILL.md:** Field classification, conditional rules, scenario design, JSON generation
-- **result-validator/SKILL.md:** XPath extraction, mapping comparison, report generation
+- **test-data-generator/SKILL.md:** Smart reuse (skip/incremental/fresh), state filtering, output format
+- **request-body-generator/SKILL.md:** Combinatorial optimization, focused/overall mode, 4 testing types, TEST_CASE_GUIDE, low-priority field sampling
+- **relevancy-tester/SKILL.md:** Field relevancy (remove field → check API error + available values) and conditional relevancy (parent-child validation)
+- **result-validator/SKILL.md:** 4-type validation, XML formatting, bug evidence collection for all types, tabbed HTML report with evidence links, progress display
 
 ---
 
 ## THE PIPELINE — STEP BY STEP
+
+### STEP 0: User Configuration (in `/full-pipeline` or `/generate-requests`)
+
+Before generating request bodies, agent asks:
+
+1. **Testing Mode:**
+   - **Focused Testing** — user describes affected areas → exhaustive edge-case scenarios for ONLY those fields + related conditional fields
+   - **Overall Testing** — packed scenarios covering ALL HOA fields across ALL blinds using combinatorial optimization (NOT blind-by-blind)
+
+2. **Testing Types:**
+   - (1) Relevancy — verify required fields and available values
+   - (2) Mapping — verify field value mappings to carrier XML
+   - (3) Result Page — verify coverage display in response
+   - (4) UUD & Defaults — verify ineligibility rules and default values
+   - (5) All of the above
 
 ### STEP 1: Generate Test Data (`/generate-testdata AZ`)
 
 **Input:** HOA requirement doc + target state
 **Output:** `output/test-data/HOA_HO3_AZ_TestData.xlsx`
 
-Process:
-1. Read Scope sheet → verify state is in scope
-2. Read Interview sheet → filter by State column for target state
-3. Read Lists sheet → filter by Carrier States column for target state
-4. Apply field-to-list relevancy (if field excluded, its list values excluded)
-5. Read Defaults and Extras → note state-conditional defaults
-6. Generate Excel with ALL original columns + Reference column
-7. Separate sheets in output: one per Blind (Start, Home, Structure, Features, Policy, Applicant) + Lists + Defaults + ResultPage
+**Smart Reuse:**
+- If test data exists AND requirement doc unchanged → **SKIP** (reuse existing)
+- If test data exists BUT requirement doc changed → **incremental update** (only apply changes, report diff)
+- If test data doesn't exist → generate from scratch
 
-**Key HOA-Specific Logic:**
-- 52 fields have XPaths (HOA sends these to carrier)
-- 117 fields have no XPath (Bolt display only or other carriers — include in test data but mark XPath as blank)
-- State patterns: "state AZ, VA" → only AZ, VA. "NOT USED FOR VA" → all except VA. "Not in MO" → all except MO. Blank → all states.
-- Lists Carrier States: "AZ, VA" → only. "Not in TX" → all except TX. Blank → all states.
+**Generation Process:**
+1. Read Scope sheet → verify state is in scope
+2. Read Interview sheet → filter: only fields with valid XPath (`/root/...`) AND relevant for state
+3. Read Lists sheet → filter by Carrier States + only values for included fields
+4. Read Defaults and Extras → filter state-conditional
+5. Copy UUD as-is
+6. Filter Result Page Coverages by state, copy Details as-is
+7. Generate Excel with ALL original columns + Reference column
+8. Add hyperlinks from Interview List column → Lists sheet
+9. Preserve formatting, freeze panes, auto-filter
 
 ### STEP 2: Generate Request Bodies (`/generate-requests AZ`)
 
-**Input:** Test data Excel + sample request body (`sample-requests/SampleRequestHOAAZ.json`)
-**Output:** `output/request-bodies/AZ/` folder + `output/scenarios/HOA_HO3_AZ_TestScenarios.xlsx`
+**Input:** Test data Excel + sample request + user's mode/type selections
+**Output:** `output/runs/{RUN}/request-bodies/` + `output/runs/{RUN}/scenarios/`
 
-Process:
-1. Parse sample request body
-2. Cross-reference with test data:
-   - Fields in request WITH XPath in test data → HOA-specific, we modify these
-   - Fields in request WITHOUT XPath or NOT in test data → OTHER CARRIER fields, KEEP AS-IS
-   - Fields in test data with XPath but NOT in request → may need to add (check conditions)
-3. Identify conditional rules (add/remove) from Relevancy Condition column
-4. Design scenarios by blind
-5. Generate JSON files + scenario document
+**Reuse Check:** If previous run exists for state, ask user: reuse or generate fresh?
 
-**CRITICAL MULTI-CARRIER RULE:**
-The request body serves ALL carriers on Bolt. The agent ONLY modifies fields that appear in HOA's Interview sheet with a valid XPath. All other fields remain exactly as they are in the sample request. This ensures other carriers still get valid data.
+**Combinatorial Optimization (CRITICAL):**
+- Independent fields are packed together — one scenario varies fields from ALL blinds simultaneously
+- Number of scenarios = MAX(value count across independent fields), not the sum
+- Dependent fields (parent-child) get their combinations overlaid onto the packed matrix
+- Low-priority fields (OccupationStr, EmploymentIndustry, etc.) sampled 2-3 values
+- Fields with 15+ values: ask user before exhaustive testing, default to 3-5 samples
 
-**HOA-Specific Scenario Examples:**
-- PLTypeOfDwelling variations (only for AZ, VA per state filter)
-- PLConstructionType variations (watch UUD: Log, Asbestos, EFIS = ineligible)
-- PLNumberOfStories variations (watch UUD: 3.5, 4 = ineligible)
-- PLPersonalLiability value cycling
-- PLAllPerilsDeductible value cycling (TX has special percentage values)
-- WindstormDeductible (not in FL) vs AnnualHurricaneDed (FL only)
-- Mitigation fields (FL only: MitCreditForm, MitWindowOpening, etc.)
-- ViciousExoticAnimals (not used for VA)
-- PLNumberOfUnits (only AZ & IL)
-- CreditCheckPermission (not in CA vs special CA version)
-- Mailing address different (triggers child fields)
-- Basement type (triggered by TypeOfFoundation = Basement)
+**File Prefixes by Type:**
+| Type | Prefix | Example |
+|---|---|---|
+| Relevancy (field) | `rel_` | `rel_001_RoofType___Relevancy.json` |
+| Relevancy (conditional) | `crel_` | `crel_001_Foundation_BasementType___ConditionalRelevancy.json` |
+| Mapping | `map_` | `map_002_combo_01___Packed.json` |
+| Result Page | `res_` | `res_001_base_coverages___ResultPage.json` |
+| UUD | `uud_` | `uud_001_construction_log___UUD.json` |
+| Defaults | `def_` | `def_001_base_defaults___Defaults.json` |
+
+**Also generates:**
+- `TEST_CASE_GUIDE.md` — plain-English descriptions grouped by testing area with coverage matrix
+- `HOA_HO3_{STATE}_TestScenarios.xlsx` — scenario documentation
 
 ### STEP 3: Run Tests (`/run-tests AZ`)
 
-**Input:** JSON files in `output/request-bodies/AZ/`
-**Output:** `output/results/AZ/` with carrier request/response pairs
+**Input:** JSON files from run folder
+**Output:** `output/runs/{RUN}/results/`
 
 Process:
-1. Clear old files from `framework/Automation/Automation/TestProject/RequestBodies/HOA/AZ/`
-2. Copy JSONs from `output/request-bodies/AZ/` to `framework/Automation/Automation/TestProject/RequestBodies/HOA/AZ/`
-3. Update `framework/Automation/Automation/TestProject/config.json` for HOA:
-   ```json
-   {
-     "Tenant": "Unify",
-     "LOB": "PersonalHome",
-     "Carrier": "HOA",
-     "PersonalLineOrCommercialLine": "PersonalLine",
-     "Environment": "QA",
-     "SubTenant": "MarketsLib",
-     "CarrierRequestFormat": "xml",
-     "State": "AZ"
-   }
-   ```
-4. Execute: `dotnet test "framework/Automation/Automation/MappingVerification.sln"`
-5. Copy results from `framework/Automation/Automation/TestProject/Output/HOA/AZ/` to `output/results/AZ/`
-6. Report: X requests sent, Y succeeded, Z failed
+1. Identify run folder (latest or user-selected)
+2. Clear old files from framework RequestBodies
+3. Copy JSONs from run folder to framework
+4. Update config.json for HOA state
+5. Execute `dotnet test` with **progress monitoring** (count *_details.json files, display `5/25 completed`)
+6. Copy results back to run folder
+7. **Format carrier XML** — parse raw carrier_request.txt and carrier_response.txt, save properly indented formatted versions alongside originals
 
 ### STEP 4: Validate Results (`/validate AZ`)
 
-**Input:** Test data Excel + results folder `output/results/AZ/` (carrier request/response pairs)
-**Output:** `output/reports/HOA_HO3_AZ_ValidationReport.html` + summary Excel
+**Input:** Test data + results from run folder + requirement doc (for evidence)
+**Output:** `output/runs/{RUN}/reports/` + `output/runs/{RUN}/evidence/`
 
 Process:
-1. Load test data (expected values, XPaths)
-2. Load Defaults and Extras (hardcoded values to verify)
-3. For each request/response pair in `output/results/AZ/`:
-
-   **Request Validation:**
-   - For each HOA field with XPath: extract value from carrier request XML using XPath
-   - Compare with expected mapping from test data
-   - Check Defaults and Extras are present
-   - "Do not send" fields → verify they're absent from XML
-   - Track: PASS / FAIL / WARNING per field
-
-   **Response Validation:**
-   - Check Result Page Coverages: dwelling, other structures, personal property, liability, medical payments, deductibles
-   - Check Result Page Details: premium (annualTotalUsd + annualFeesUsd), success/fail indication
-   - Track: PASS / FAIL / WARNING per coverage
-
-4. Generate graphical HTML report:
-   - Dashboard with pass/fail pie chart
-   - Per-request breakdown
-   - Per-field heatmap
-   - Failed items highlighted with expected vs actual
-   - Trend across scenarios (which blinds have most failures)
-
-5. Generate summary Excel:
-   - Sheet 1: Overall summary (pass/fail counts per scenario)
-   - Sheet 2: Detailed field-by-field results
-   - Sheet 3: Failed items only (for quick action)
-
----
-
-## HOA-SPECIFIC KNOWLEDGE (Embedded in CLAUDE.md)
-
-### Carrier Details
-- **Name:** Homeowners of America (HOA)
-- **Platform:** BriteCore
-- **LOB:** HO3 (Homeowners)
-- **Request Format:** XML
-- **XPath root:** `/root/...`
-- **Total fields HOA cares about:** 52 (those with XPaths)
-- **Defaults sent every request:** 20 (from Defaults and Extras sheet)
-
-### State Filtering Rules
-Interview `State` column:
-| Pattern | Meaning |
-|---|---|
-| Blank/None | All states |
-| "state AZ, VA" | Only AZ and VA |
-| "FL" | Only FL |
-| "NOT USED FOR VA" | All except VA |
-| "Not in MO" | All except MO |
-| "Not in FL" | All except FL |
-| "Not in CA" | All except CA |
-| "state AZ" | Only AZ |
-| "state AZ & IL" | Only AZ and IL |
-
-Lists `Carrier States` column:
-| Pattern | Meaning |
-|---|---|
-| Blank/None | All states |
-| "AZ, VA" | Only AZ and VA |
-| "Not in TX" / "not in TX" | All except TX |
-| "CA, FL" | Only CA and FL |
-| "TX" | Only TX |
-| "IN,NY" | Only IN and NY |
-| "VA" | Only VA |
-| "CA,TX" | Only CA and TX |
-
-### Ineligibility Rules (UUD)
-1. PLConstructionType in {Log, Asbestos, EFIS} → ineligible
-2. PLNumberOfStories in {3.5, 4} → ineligible
-
-### Defaults and Extras (Always Sent)
-20 hardcoded values including:
-- carrier = "HOMEOWNERS_OF_AMERICA"
-- protectionClass = 1
-- replacementCostOnPersonalProperty = true
-- waterDamage = true
-- seasonalDwelling = false (not for VA)
-- roofImpactRating = None (not for AZ)
-- Flooring = "Hardwood" (VA, AZ only)
-- roofInstallationDate = derived from PLRoofUpdated/RoofUpdatedYear
-- mineSubsidence = conditional (IL specific counties)
-- Minimum deductible rules based on PersonalLineReplacementCost
-
-### Multi-Carrier Request Body Rule
-The JSON request body contains fields for ALL carriers on Bolt. The agent ONLY modifies:
-- Fields that appear in HOA's Interview sheet WITH a valid XPath
-- Defaults and Extras values
-
-All other fields in the request body are for other carriers and must remain EXACTLY as-is.
+1. Load reference data (test data, defaults, lists, result page coverages)
+2. **Format carrier XML** if not done in Step 3
+3. **Auto-detect testing types** from file prefixes (`rel_`, `crel_`, `map_`, `res_`, `uud_`, `def_`)
+4. Validate each scenario per type with **progress display** (`5/25 validated`)
+5. **Collect bug evidence** for every FAIL — 3 files per bug:
+   - Requirement doc reference (from ORIGINAL client-provided doc, not test data)
+   - What was sent (carrier request)
+   - What was received (carrier response)
+   - Evidence formats vary by type (relevancy, mapping, result page, UUD, defaults)
+6. Generate **tabbed HTML report**:
+   ```
+   [Overall Dashboard] [Relevancy Check] [Mapping Verification] [Result Page] [UUD & Defaults]
+   ```
+   - Relevancy tab has sub-tabs: Field Relevancy | Conditional Relevancy
+   - UUD tab has sub-tabs: UUD Ineligibility | Defaults Verification
+   - Every FAIL row has downloadable evidence links
+   - CSS-only tabs (no JavaScript)
+7. Generate summary Excel (7 sheets)
 
 ---
 
 ## WHAT THE USER SEES
 
-### Simple Interaction
+### Full Pipeline Interaction
 ```
 User: /full-pipeline AZ
 
-Agent: 
-📋 Phase 1: Generating test data for HOA HO3, state AZ...
-   ✅ 142 fields extracted (48 relevant for AZ)
-   ✅ 38 list tables with 890 state-filtered values
-   ✅ Test data saved: output/test-data/HOA_HO3_AZ_TestData.xlsx
+Agent: What testing mode do you want?
+  1. Focused Testing — provide specific areas/changes
+  2. Overall Testing — full regression with packed scenarios
+
+User: 1 — roof type mapping changed, number of stories values updated
+
+Agent: Which testing types?
+  1. Relevancy  2. Mapping  3. Result Page  4. UUD & Defaults  5. All
+
+User: 2
+
+Agent:
+📋 Phase 1: Test data for HOA HO3, state AZ...
+   ✅ Test data already exists and is up-to-date. Skipping generation.
 
 🔧 Phase 2: Generating request bodies...
-   ✅ 35 test scenarios created across 6 blinds
-   ✅ 35 JSON files saved to output/request-bodies/AZ/
-   ✅ Scenario doc saved: output/scenarios/HOA_HO3_AZ_TestScenarios.xlsx
+   Mode: Focused (RoofType, PLNumberOfStories) | Types: Mapping
+   ✅ 6 packed scenarios created (covers all values for focused fields)
+   ✅ TEST_CASE_GUIDE.md saved
+   ✅ Scenario doc saved
 
 🚀 Phase 3: Running tests via C# framework...
-   ✅ 35 requests sent to HOA via Bolt QA
-   ✅ 30 Success, 3 Declined, 2 Failed
-   ✅ Results saved to output/results/AZ/
+   ⏳ 2/6 scenarios completed...
+   ⏳ 4/6 scenarios completed...
+   ✅ 6/6 scenarios completed
+   ✅ 5 Success, 1 Declined, 0 Failed
+   ✅ Carrier XML formatted
 
 📊 Phase 4: Validating results...
-   ✅ 1,820 field checks performed
-   ✅ 1,756 PASSED (96.5%)
-   ✅ 42 FAILED (2.3%)
-   ✅ 22 WARNINGS (1.2%)
-   
-   📈 [Interactive validation dashboard displayed]
-   📁 Report saved: output/reports/HOA_HO3_AZ_ValidationReport.html
+   ⏳ 3/6 scenarios validated...
+   ✅ 6/6 scenarios validated
+   ✅ 98.2% overall pass rate
+   📁 Evidence collected for 2 FAIL items
+
+🏁 Pipeline complete for AZ
+   📁 Run folder: output/runs/AZ_2026-04-03_10-30-00/
+   📊 6 scenarios | 98.2% pass rate
+   🧪 Types tested: Mapping
+   📈 Report: output/runs/AZ_2026-04-03_10-30-00/reports/HOA_HO3_AZ_ValidationReport.html
 ```
 
 ### Output Delivered to User
-1. **Test Data Excel** — all columns preserved + Reference column
-2. **Graphical Test Results** — HTML dashboard with:
-   - Overall pass/fail rate (pie chart)
-   - Per-blind breakdown (bar chart)
-   - Per-scenario results (table with color coding)
-   - Failed items detail (expandable sections)
-   - Trend analysis across scenarios
+1. **Test Data Excel** — all columns preserved + Reference column (reused when unchanged)
+2. **TEST_CASE_GUIDE.md** — plain-English descriptions with coverage matrix
+3. **Formatted Carrier XML** — properly indented request/response (not raw)
+4. **Tabbed HTML Dashboard** — Overall, Relevancy, Mapping, Result Page, UUD & Defaults tabs with evidence links
+5. **Bug Evidence Files** — requirement doc reference + request + response for each FAIL
+6. **Summary Excel** — 7 sheets covering all testing types
+7. **Run metadata** — JSON with mode, types, timestamp, scenario count
+
+---
+
+## KEY OPTIMIZATIONS
+
+| Optimization | Description |
+|---|---|
+| **Smart test data reuse** | Skip generation if requirement doc unchanged; incremental update if only a few changes |
+| **Request body reuse check** | Ask user before regenerating if previous run exists |
+| **Combinatorial packing** | Pack independent fields across ALL blinds into each scenario. Scenarios = MAX(values), not SUM |
+| **Low-priority field sampling** | OccupationStr, EmploymentIndustry, carrier lists: sample 2-3 values only |
+| **15+ value threshold** | Ask user before exhaustively testing fields with many values |
+| **Focused testing mode** | Test only affected fields with exhaustive edge cases |
+| **4 testing types** | Relevancy, Mapping, Result Page, UUD & Defaults — each with distinct validation logic |
+| **Bug evidence per type** | 3 evidence files per FAIL from requirement doc, request, and response |
+| **Timestamped run folders** | Preserve history across runs |
+| **Progress monitoring** | Granular `5/25 completed` display during execution and validation |
+| **Formatted carrier XML** | Pretty-printed alongside raw files |
 
 ---
 
 ## STATUS
 
 All agent components are built and ready:
-- CLAUDE.md with full HOA domain knowledge
-- 3 skill definitions (test-data-generator, request-body-generator, result-validator)
+- CLAUDE.md with full HOA domain knowledge + all optimizations
+- 4 skill definitions (test-data-generator, request-body-generator, relevancy-tester, result-validator)
 - 5 slash commands (generate-testdata, generate-requests, run-tests, validate, full-pipeline)
 - C# framework uploaded and integrated (DO NOT MODIFY)
-- Sample request for IL uploaded
 
-**Ready to run:** `/generate-testdata IL` or `/full-pipeline IL`
+**Ready to run:** `/generate-testdata TX` or `/full-pipeline TX`

@@ -16,7 +16,13 @@
       "Bash(done)",
       "Bash(python -c \"import openpyxl; print\\(''openpyxl OK''\\)\")",
       "Bash(python output/reports/_validate_tx.py)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(where python:*)",
+      "Bash(where py:*)",
+      "Bash(pip --version)",
+      "Bash(conda --version)",
+      "Bash(git status *)",
+      "Bash(git add *)"
     ]
   }
 }

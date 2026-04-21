@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOA Testing Agent — Interactive Process Diagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+
+        /* Header */
+        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1a4971 100%); padding: 40px 60px; text-align: center; border-bottom: 3px solid #3b82f6; }
+        .header h1 { font-size: 2.4em; color: #fff; margin-bottom: 8px; letter-spacing: 1px; }
+        .header .subtitle { font-size: 1.1em; color: #93c5fd; }
+        .header .badges { margin-top: 16px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .badge { padding: 6px 16px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
+        .badge-blue { background: #1d4ed8; color: #dbeafe; }
+        .badge-green { background: #15803d; color: #dcfce7; }
+        .badge-purple { background: #7e22ce; color: #f3e8ff; }
+        .badge-orange { background: #c2410c; color: #fff7ed; }
+
+        /* Navigation */
+        .nav { background: #1e293b; padding: 12px 60px; display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; }
+        .nav-btn { padding: 8px 20px; border: 1px solid #475569; border-radius: 8px; background: transparent; color: #94a3b8; cursor: pointer; font-size: 0.9em; transition: all 0.3s; }
+        .nav-btn:hover, .nav-btn.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+
+        /* Main container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Section */
+        .section { display: none; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-size: 1.8em; color: #60a5fa; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #1e3a5f; }
+
+        /* Flow cards */
+        .flow { display: flex; flex-direction: column; gap: 0; }
+        .flow-step { position: relative; padding: 24px 28px; margin-left: 40px; border-left: 3px solid #334155; }
+        .flow-step:last-child { border-left-color: transparent; }
+        .flow-step::before { content: ''; position: absolute; left: -10px; top: 28px; width: 17px; height: 17px; border-radius: 50%; border: 3px solid #3b82f6; background: #0f172a; z-index: 1; }
+        .flow-step.decision::before { border-radius: 3px; transform: rotate(45deg); border-color: #f59e0b; }
+        .flow-step.user::before { border-color: #10b981; }
+        .flow-step.output::before { border-color: #a855f7; }
+
+        .step-card { background: #1e293b; border-radius: 12px; padding: 20px 24px; border: 1px solid #334155; transition: all 0.3s; }
+        .step-card:hover { border-color: #3b82f6; transform: translateX(4px); box-shadow: 0 4px 20px rgba(59,130,246,0.15); }
+        .step-card.decision-card { border-color: #f59e0b33; }
+        .step-card.decision-card:hover { border-color: #f59e0b; }
+        .step-card.user-card { border-color: #10b98133; }
+        .step-card.user-card:hover { border-color: #10b981; }
+        .step-card.output-card { border-color: #a855f733; }
+        .step-card.output-card:hover { border-color: #a855f7; }
+
+        .step-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 700; }
+        .step-label.agent { color: #3b82f6; }
+        .step-label.decision { color: #f59e0b; }
+        .step-label.user { color: #10b981; }
+        .step-label.output { color: #a855f7; }
+
+        .step-title { font-size: 1.15em; color: #f1f5f9; font-weight: 600; margin-bottom: 8px; }
+        .step-desc { color: #94a3b8; font-size: 0.92em; }
+        .step-detail { margin-top: 12px; padding: 12px 16px; background: #0f172a; border-radius: 8px; font-size: 0.85em; color: #cbd5e1; display: none; }
+        .step-detail.open { display: block; }
+        .step-toggle { margin-top: 10px; color: #60a5fa; font-size: 0.85em; cursor: pointer; user-select: none; }
+        .step-toggle:hover { text-decoration: underline; }
+
+        /* Arrow connector */
+        .arrow { text-align: center; color: #475569; font-size: 1.4em; margin: -4px 0; margin-left: 37px; }
+
+        /* Feature grid */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .feature-card { background: #1e293b; border-radius: 12px; padding: 24px; border: 1px solid #334155; transition: all 0.3s; }
+        .feature-card:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .feature-icon { font-size: 2em; margin-bottom: 12px; }
+        .feature-title { font-size: 1.1em; color: #f1f5f9; font-weight: 600; margin-bottom: 8px; }
+        .feature-desc { color: #94a3b8; font-size: 0.9em; }
+
+        /* Comparison table */
+        .comp-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .comp-table th { background: #1e3a5f; color: #93c5fd; padding: 12px 16px; text-align: left; font-size: 0.9em; }
+        .comp-table td { padding: 12px 16px; border-bottom: 1px solid #1e293b; font-size: 0.9em; color: #cbd5e1; }
+        .comp-table tr:hover td { background: #1e293b; }
+        .comp-table .check { color: #10b981; font-weight: bold; }
+
+        /* Pipeline visual */
+        .pipeline-visual { display: flex; align-items: center; gap: 0; margin: 30px 0; flex-wrap: wrap; justify-content: center; }
+        .pipe-node { padding: 16px 24px; border-radius: 12px; text-align: center; min-width: 140px; position: relative; }
+        .pipe-node .pipe-num { font-size: 0.75em; color: #94a3b8; margin-bottom: 4px; }
+        .pipe-node .pipe-title { font-size: 0.95em; font-weight: 600; }
+        .pipe-node .pipe-sub { font-size: 0.75em; margin-top: 4px; opacity: 0.8; }
+        .pipe-arrow { font-size: 1.5em; color: #475569; padding: 0 4px; }
+        .pipe-config { background: #1e3a5f; border: 2px solid #3b82f6; color: #93c5fd; }
+        .pipe-data { background: #14532d; border: 2px solid #22c55e; color: #bbf7d0; }
+        .pipe-gen { background: #4a1d96; border: 2px solid #a855f7; color: #e9d5ff; }
+        .pipe-run { background: #7c2d12; border: 2px solid #f97316; color: #fed7aa; }
+        .pipe-val { background: #1e3a5f; border: 2px solid #06b6d4; color: #a5f3fc; }
+
+        /* Testing types visual */
+        .type-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 20px; }
+        .type-card { padding: 20px; border-radius: 12px; border: 2px solid; }
+        .type-card h3 { font-size: 1.05em; margin-bottom: 8px; }
+        .type-card p { font-size: 0.85em; opacity: 0.9; }
+        .type-card .prefix { font-family: monospace; font-size: 0.8em; margin-top: 8px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+        .type-rel { background: #1e3a5f22; border-color: #3b82f6; color: #93c5fd; }
+        .type-rel .prefix { background: #1e3a5f; }
+        .type-map { background: #14532d22; border-color: #22c55e; color: #bbf7d0; }
+        .type-map .prefix { background: #14532d; }
+        .type-res { background: #4a1d9622; border-color: #a855f7; color: #e9d5ff; }
+        .type-res .prefix { background: #4a1d96; }
+        .type-uud { background: #7c2d1222; border-color: #f97316; color: #fed7aa; }
+        .type-uud .prefix { background: #7c2d12; }
+
+        /* Output tree */
+        .tree { font-family: 'Consolas', 'Courier New', monospace; font-size: 0.9em; background: #1e293b; padding: 24px; border-radius: 12px; border: 1px solid #334155; line-height: 1.8; color: #94a3b8; white-space: pre; overflow-x: auto; }
+        .tree .folder { color: #60a5fa; font-weight: 600; }
+        .tree .file { color: #a5b4fc; }
+        .tree .new { color: #4ade80; }
+        .tree .highlight { background: #3b82f620; padding: 2px 6px; border-radius: 4px; }
+
+        /* Stats row */
+        .stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0; }
+        .stat-card { flex: 1; min-width: 140px; background: #1e293b; border-radius: 10px; padding: 16px 20px; text-align: center; border: 1px solid #334155; }
+        .stat-num { font-size: 1.8em; font-weight: 700; }
+        .stat-num.blue { color: #3b82f6; }
+        .stat-num.green { color: #22c55e; }
+        .stat-num.purple { color: #a855f7; }
+        .stat-num.orange { color: #f97316; }
+        .stat-label { font-size: 0.8em; color: #94a3b8; margin-top: 4px; }
+
+        /* Optimization comparison */
+        .opt-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .opt-box { padding: 20px; border-radius: 12px; }
+        .opt-before { background: #7f1d1d22; border: 1px solid #ef4444; }
+        .opt-before h4 { color: #fca5a5; }
+        .opt-after { background: #14532d22; border: 1px solid #22c55e; }
+        .opt-after h4 { color: #86efac; }
+        .opt-box ul { list-style: none; margin-top: 12px; }
+        .opt-box li { padding: 6px 0; font-size: 0.9em; color: #cbd5e1; }
+        .opt-box li::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 10px; }
+        .opt-before li::before { background: #ef4444; }
+        .opt-after li::before { background: #22c55e; }
+
+        /* Report mock tabs */
+        .report-tab { padding: 12px 20px; background: #1e293b; border: 1px solid #334155; border-bottom: none; border-radius: 8px 8px 0 0; color: #94a3b8; font-size: 0.9em; cursor: pointer; transition: all 0.2s; }
+        .report-tab:hover { color: #e2e8f0; background: #253248; }
+        .report-tab.active { background: #1e3a5f; border: 2px solid #3b82f6; border-bottom: none; color: #93c5fd; font-weight: 600; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 24px 20px; }
+            .header h1 { font-size: 1.6em; }
+            .nav { padding: 10px 16px; }
+            .container { padding: 20px 12px; }
+            .opt-before-after { grid-template-columns: 1fr; }
+            .pipeline-visual { flex-direction: column; }
+            .pipe-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>HOA Testing Agent</h1>
+    <div class="subtitle">End-to-End AI Testing Agent for HOA (BriteCore) HO3 on Bolt Platform</div>
+    <div class="badges">
+        <span class="badge badge-blue">Claude Code + VS Code</span>
+        <span class="badge badge-green">4 Testing Types</span>
+        <span class="badge badge-purple">Combinatorial Optimization</span>
+        <span class="badge badge-orange">Bug Evidence Collection</span>
+    </div>
+</div>
+
+<div class="nav" id="nav">
+    <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+    <button class="nav-btn" onclick="showSection('pipeline')">Pipeline Flow</button>
+    <button class="nav-btn" onclick="showSection('types')">Testing Types</button>
+    <button class="nav-btn" onclick="showSection('optimizations')">Optimizations</button>
+    <button class="nav-btn" onclick="showSection('features')">Key Features</button>
+    <button class="nav-btn" onclick="showSection('output')">Output Structure</button>
+    <button class="nav-btn" onclick="showSection('report')">Dashboard Report</button>
+</div>
+
+<div class="container">
+
+    <!-- ============ OVERVIEW ============ -->
+    <div class="section active" id="sec-overview">
+        <h2 class="section-title">Agent Overview</h2>
+
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-num blue">4</div><div class="stat-label">Testing Types</div></div>
+            <div class="stat-card"><div class="stat-num green">4</div><div class="stat-label">Skills</div></div>
+            <div class="stat-card"><div class="stat-num purple">5</div><div class="stat-label">Slash Commands</div></div>
+            <div class="stat-card"><div class="stat-num orange">52</div><div class="stat-label">HOA Fields with XPath</div></div>
+        </div>
+
+        <p style="color: #94a3b8; margin: 20px 0; font-size: 1.05em;">
+            The HOA Testing Agent is an AI-powered end-to-end testing system built on Claude Code.
+            It reads the HOA carrier requirement document, generates optimized test scenarios,
+            executes them through a C# automation framework, validates results across 4 testing dimensions,
+            and produces a comprehensive tabbed dashboard with bug evidence for every failure.
+        </p>
+
+        <div class="pipeline-visual">
+            <div class="pipe-node pipe-config">
+                <div class="pipe-num">Phase 0</div>
+                <div class="pipe-title">Configure</div>
+                <div class="pipe-sub">Mode + Types</div>
+            </div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-node pipe-data">
+                <div class="pipe-num">Phase 1</div>
+                <div class="pipe-title">Test Data</div>
+                <div class="pipe-sub">Smart Reuse</div>
+            </div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-node pipe-gen">
+                <div class="pipe-num">Phase 2</div>
+                <div class="pipe-title">Scenarios</div>
+                <div class="pipe-sub">Packed JSONs</div>
+            </div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-node pipe-run">
+                <div class="pipe-num">Phase 3</div>
+                <div class="pipe-title">Execute</div>
+                <div class="pipe-sub">C# Framework</div>
+            </div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-node pipe-val">
+                <div class="pipe-num">Phase 4</div>
+                <div class="pipe-title">Validate</div>
+                <div class="pipe-sub">Tabbed Report</div>
+            </div>
+        </div>
+
+        <h3 style="color: #f1f5f9; margin: 30px 0 16px;">Available Commands</h3>
+        <table class="comp-table">
+            <thead><tr><th>Command</th><th>What It Does</th></tr></thead>
+            <tbody>
+                <tr><td><code style="color:#60a5fa">/full-pipeline {STATE}</code></td><td>Run complete end-to-end pipeline with all phases</td></tr>
+                <tr><td><code style="color:#60a5fa">/generate-testdata {STATE}</code></td><td>Generate/reuse state-specific test data Excel</td></tr>
+                <tr><td><code style="color:#60a5fa">/generate-requests {STATE}</code></td><td>Generate packed JSON request body scenarios</td></tr>
+                <tr><td><code style="color:#60a5fa">/run-tests {STATE}</code></td><td>Execute tests via C# framework with progress monitoring</td></tr>
+                <tr><td><code style="color:#60a5fa">/validate {STATE}</code></td><td>Validate results, collect evidence, produce tabbed report</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============ PIPELINE FLOW ============ -->
+    <div class="section" id="sec-pipeline">
+        <h2 class="section-title">Execution Pipeline Flow</h2>
+
+        <div class="flow">
+            <!-- Phase 0 -->
+            <div class="flow-step user">
+                <div class="step-card user-card">
+                    <div class="step-label user">USER INPUT</div>
+                    <div class="step-title">User runs: /full-pipeline {STATE}</div>
+                    <div class="step-desc">User provides a target state code (e.g., TX, AZ, FL, IL)</div>
+                </div>
+            </div>
+
+            <div class="flow-step decision">
+                <div class="step-card decision-card">
+                    <div class="step-label decision">AGENT ASKS &mdash; TESTING MODE</div>
+                    <div class="step-title">Focused or Overall Testing?</div>
+                    <div class="step-desc">
+                        <strong>Focused:</strong> User describes affected areas &rarr; agent tests ONLY those fields exhaustively<br>
+                        <strong>Overall:</strong> Full regression with packed scenarios covering ALL HOA fields
+                    </div>
+                    <div class="step-toggle" onclick="toggleDetail(this)">+ Show example interaction</div>
+                    <div class="step-detail">
+                        <strong>Agent:</strong> "What testing mode do you want?"<br>
+                        <strong>User:</strong> "Focused — roof type mapping changed, number of stories values updated"<br>
+                        <strong>Agent:</strong> Identifies RoofType, PLNumberOfStories + their conditional children &rarr; generates exhaustive scenarios for just those fields
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step decision">
+                <div class="step-card decision-card">
+                    <div class="step-label decision">AGENT ASKS &mdash; TESTING TYPES</div>
+                    <div class="step-title">Which testing types to run?</div>
+                    <div class="step-desc">
+                        (1) Relevancy &nbsp; (2) Mapping &nbsp; (3) Result Page &nbsp; (4) UUD & Defaults &nbsp; (5) All
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="step-card">
+                    <div class="step-label agent">AGENT &mdash; PHASE 0</div>
+                    <div class="step-title">Create Timestamped Run Folder</div>
+                    <div class="step-desc">Creates <code>output/runs/{STATE}_{YYYY-MM-DD}_{HH-MM-SS}/</code> with subdirectories and run-metadata.json</div>
+                </div>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="flow-step decision">
+                <div class="step-card decision-card">
+                    <div class="step-label decision">SMART CHECK &mdash; PHASE 1</div>
+                    <div class="step-title">Does test data already exist for this state?</div>
+                    <div class="step-desc">
+                        <strong>Exists + doc unchanged:</strong> SKIP &mdash; reuse existing test data<br>
+                        <strong>Exists + doc changed:</strong> Incremental update &mdash; only apply diff, report changes<br>
+                        <strong>Doesn't exist:</strong> Generate from scratch
+                    </div>
+                    <div class="step-toggle" onclick="toggleDetail(this)">+ Show incremental update example</div>
+                    <div class="step-detail">
+                        "Requirement doc has changed. Updated fields: +2 new Interview fields (MitWindResistance, MitOpeningProtection), ~1 modified list (PLRoofType added 'SyntheticSlate'). All other test data unchanged."
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step output">
+                <div class="step-card output-card">
+                    <div class="step-label output">OUTPUT</div>
+                    <div class="step-title">Test Data Excel</div>
+                    <div class="step-desc">output/test-data/HOA_HO3_{STATE}_TestData.xlsx &mdash; state-filtered, all original columns + Reference column</div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="flow-step decision">
+                <div class="step-card decision-card">
+                    <div class="step-label decision">REUSE CHECK &mdash; PHASE 2</div>
+                    <div class="step-title">Previous request bodies exist?</div>
+                    <div class="step-desc">If previous run found &rarr; ask user: "Reuse or generate fresh?"</div>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="step-card">
+                    <div class="step-label agent">AGENT &mdash; PHASE 2</div>
+                    <div class="step-title">Generate Packed Request Bodies</div>
+                    <div class="step-desc">
+                        Combinatorial optimization: pack independent fields from ALL blinds into each scenario.<br>
+                        Scenarios = MAX(value count), not SUM. Low-priority fields sampled (2-3 values).<br>
+                        Fields with 15+ values: ask user before exhaustive testing.
+                    </div>
+                    <div class="step-toggle" onclick="toggleDetail(this)">+ Show packing example</div>
+                    <div class="step-detail">
+                        <strong>5 fields:</strong> IsFire(2), IsSmoke(2), ConstructionType(5), RoofType(4), Stories(5)<br>
+                        <strong>Naive:</strong> 2+2+5+4+5 = 18 scenarios<br>
+                        <strong>Packed:</strong> MAX(2,2,5,4,5) = <strong>5 scenarios</strong> &mdash; each varies ALL fields simultaneously
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step output">
+                <div class="step-card output-card">
+                    <div class="step-label output">OUTPUT</div>
+                    <div class="step-title">JSON Scenarios + TEST_CASE_GUIDE.md</div>
+                    <div class="step-desc">
+                        File prefixes by type: <code>rel_</code> <code>crel_</code> <code>map_</code> <code>res_</code> <code>uud_</code> <code>def_</code><br>
+                        Plain-English test case guide grouped by testing area with coverage matrix
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="flow-step">
+                <div class="step-card">
+                    <div class="step-label agent">AGENT &mdash; PHASE 3</div>
+                    <div class="step-title">Execute via C# Framework</div>
+                    <div class="step-desc">
+                        Copy JSONs to framework &rarr; update config &rarr; run <code>dotnet test</code><br>
+                        Monitor progress: <code>5/25 scenarios completed...</code><br>
+                        Collect results + format carrier XML (pretty-print)
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step output">
+                <div class="step-card output-card">
+                    <div class="step-label output">OUTPUT</div>
+                    <div class="step-title">Results (Raw + Formatted)</div>
+                    <div class="step-desc">Carrier request/response pairs &mdash; both raw and properly indented formatted versions</div>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="flow-step">
+                <div class="step-card">
+                    <div class="step-label agent">AGENT &mdash; PHASE 4</div>
+                    <div class="step-title">Validate Per Testing Type</div>
+                    <div class="step-desc">
+                        Auto-detect testing type by file prefix &rarr; run appropriate validation logic<br>
+                        Progress: <code>5/25 scenarios validated...</code><br>
+                        Collect bug evidence (3 files per FAIL from requirement doc, request, response)
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step output">
+                <div class="step-card output-card">
+                    <div class="step-label output">FINAL OUTPUT</div>
+                    <div class="step-title">Tabbed HTML Dashboard + Bug Evidence</div>
+                    <div class="step-desc">
+                        5 tabs: Overall | Relevancy | Mapping | Result Page | UUD & Defaults<br>
+                        Every FAIL row has downloadable evidence links<br>
+                        Summary Excel with 7 sheets
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TESTING TYPES ============ -->
+    <div class="section" id="sec-types">
+        <h2 class="section-title">4 Testing Types</h2>
+
+        <p style="color: #94a3b8; margin-bottom: 20px;">Each testing type validates a different dimension of the carrier integration. The agent generates distinct request bodies per type (identified by file prefix) and applies type-specific validation logic.</p>
+
+        <div class="type-cards">
+            <div class="type-card type-rel">
+                <h3>1. Relevancy Testing</h3>
+                <p><strong>Purpose:</strong> Verify that required fields are correctly configured in the API and their available values match the requirement document.</p>
+                <p style="margin-top:8px"><strong>Field Relevancy:</strong> Remove a mandatory field &rarr; API should error + list available values &rarr; compare with doc</p>
+                <p style="margin-top:4px"><strong>Conditional:</strong> Set parent to triggering value, remove child &rarr; API should require child</p>
+                <div class="prefix">rel_001 &nbsp; crel_001</div>
+            </div>
+            <div class="type-card type-map">
+                <h3>2. Mapping Testing</h3>
+                <p><strong>Purpose:</strong> Verify that Bolt field values map correctly to carrier XML values at the expected XPaths.</p>
+                <p style="margin-top:8px">Uses combinatorial packing &mdash; each scenario varies multiple independent fields from ALL blinds simultaneously.</p>
+                <div class="prefix">map_001</div>
+            </div>
+            <div class="type-card type-res">
+                <h3>3. Result Page Testing</h3>
+                <p><strong>Purpose:</strong> Verify that coverages and details display correctly in the API response.</p>
+                <p style="margin-top:8px">Varies coverage/policy fields and checks response XML for correct display values and premium calculation.</p>
+                <div class="prefix">res_001</div>
+            </div>
+            <div class="type-card type-uud">
+                <h3>4. UUD & Defaults</h3>
+                <p><strong>Purpose:</strong> Verify ineligibility rules trigger decline and all 20 hardcoded defaults are present in carrier XML.</p>
+                <p style="margin-top:8px"><strong>UUD:</strong> Send ineligible values (Log, EFIS, 3.5, 4) &rarr; verify API declines</p>
+                <p style="margin-top:4px"><strong>Defaults:</strong> Verify all 20 defaults at correct XPaths</p>
+                <div class="prefix">uud_001 &nbsp; def_001</div>
+            </div>
+        </div>
+
+        <h3 style="color: #f1f5f9; margin: 30px 0 16px;">Bug Evidence Per Type</h3>
+        <table class="comp-table">
+            <thead><tr><th>Type</th><th>Requirement Evidence</th><th>Request Evidence</th><th>Response Evidence</th></tr></thead>
+            <tbody>
+                <tr><td style="color:#93c5fd">Relevancy</td><td>Field definition + ALL list values from doc</td><td>JSON showing field removed</td><td>API validation error + available values</td></tr>
+                <tr><td style="color:#93c5fd">Conditional</td><td>Relevancy Condition expression</td><td>Parent value set + child removed</td><td>API error (or lack) for child</td></tr>
+                <tr><td style="color:#bbf7d0">Mapping</td><td>Interview row + Mapping from Lists</td><td>Carrier XML value at XPath</td><td>N/A (request-side check)</td></tr>
+                <tr><td style="color:#e9d5ff">Result Page</td><td>Result Page Coverages row</td><td>Coverage values sent</td><td>Response XML coverage values</td></tr>
+                <tr><td style="color:#fed7aa">UUD</td><td>UUD rule from doc</td><td>JSON with ineligible value</td><td>API decline/accept status</td></tr>
+                <tr><td style="color:#fed7aa">Defaults</td><td>Defaults row with XPath + value</td><td>Carrier XML at default's XPath</td><td>N/A (request-side)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============ OPTIMIZATIONS ============ -->
+    <div class="section" id="sec-optimizations">
+        <h2 class="section-title">Agent Optimizations</h2>
+
+        <div class="opt-before-after">
+            <div class="opt-box opt-before">
+                <h4>Before Optimization</h4>
+                <ul>
+                    <li>One field changed per request body</li>
+                    <li>Organized blind-by-blind</li>
+                    <li>Test data regenerated every time</li>
+                    <li>All field values tested exhaustively</li>
+                    <li>Results overwrite previous runs</li>
+                    <li>Only mapping verification</li>
+                    <li>Raw unformatted carrier XML</li>
+                    <li>No bug evidence collection</li>
+                    <li>No progress visibility</li>
+                </ul>
+            </div>
+            <div class="opt-box opt-after">
+                <h4>After Optimization</h4>
+                <ul>
+                    <li>Multiple fields packed per request (combinatorial)</li>
+                    <li>Fields from ALL blinds in one scenario</li>
+                    <li>Smart reuse: skip / incremental update / fresh</li>
+                    <li>Low-priority fields sampled; 15+ threshold asks user</li>
+                    <li>Timestamped run folders preserve history</li>
+                    <li>4 testing types: Relevancy, Mapping, Result Page, UUD</li>
+                    <li>Pretty-printed formatted XML alongside raw</li>
+                    <li>3 evidence files per FAIL for all test types</li>
+                    <li>Granular progress: 5/25 completed</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="color: #f1f5f9; margin: 30px 0 16px;">Combinatorial Packing — The Key Optimization</h3>
+        <table class="comp-table">
+            <thead><tr><th>Field</th><th>Type</th><th>Values</th><th>Scenario 1</th><th>Scenario 2</th><th>Scenario 3</th><th>Scenario 4</th><th>Scenario 5</th></tr></thead>
+            <tbody>
+                <tr><td>IsFire</td><td>Boolean</td><td>2</td><td class="check">true</td><td class="check">false</td><td>true</td><td>false</td><td>true</td></tr>
+                <tr><td>IsSmoke</td><td>Boolean</td><td>2</td><td class="check">true</td><td class="check">false</td><td>true</td><td>false</td><td>true</td></tr>
+                <tr><td>ConstructionType</td><td>Dropdown</td><td>5</td><td class="check">Frame</td><td class="check">Masonry</td><td class="check">Brick</td><td class="check">Steel</td><td class="check">Stucco</td></tr>
+                <tr><td>RoofType</td><td>Dropdown</td><td>4</td><td class="check">Asphalt</td><td class="check">Metal</td><td class="check">Tile</td><td class="check">Slate</td><td>Asphalt</td></tr>
+                <tr><td>Stories</td><td>Dropdown</td><td>5</td><td class="check">1</td><td class="check">1.5</td><td class="check">2</td><td class="check">2.5</td><td class="check">3</td></tr>
+            </tbody>
+        </table>
+        <p style="color: #4ade80; margin-top: 12px; font-weight: 600;">
+            Result: 5 scenarios instead of 18 &mdash; full coverage with 72% fewer requests
+        </p>
+        <p style="color: #94a3b8; margin-top: 6px; font-size: 0.9em;">
+            <span class="check">Bold green</span> = first time this value is tested. After coverage, any valid value is used.
+        </p>
+    </div>
+
+    <!-- ============ KEY FEATURES ============ -->
+    <div class="section" id="sec-features">
+        <h2 class="section-title">Key Features</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F3AF;</div>
+                <div class="feature-title">Focused Testing Mode</div>
+                <div class="feature-desc">User describes specific changes (e.g., "roof type mapping changed") &rarr; agent tests ONLY those fields with every possible value, conditional branch, and edge case.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4E6;</div>
+                <div class="feature-title">Combinatorial Packing</div>
+                <div class="feature-desc">Independent fields from ALL blinds packed into each request body. Scenarios = MAX(value counts) not SUM. Reduces 20+ scenarios to 5-10.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x267B;</div>
+                <div class="feature-title">Smart Test Data Reuse</div>
+                <div class="feature-desc">Skips generation when requirement doc unchanged. Incrementally updates when only a few things changed. Reports exact diff to user.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F50D;</div>
+                <div class="feature-title">4 Testing Types</div>
+                <div class="feature-desc">Relevancy (required fields + values), Mapping (field-to-XML), Result Page (coverage display), UUD & Defaults (ineligibility + hardcoded values).</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F41B;</div>
+                <div class="feature-title">Bug Evidence Collection</div>
+                <div class="feature-desc">3 evidence files per FAIL: requirement doc reference, carrier request, carrier response. Linked from dashboard for instant download. Covers ALL test types.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4CA;</div>
+                <div class="feature-title">Tabbed HTML Dashboard</div>
+                <div class="feature-desc">5 main tabs with sub-tabs. CSS-only (no JavaScript). Color-coded pass/fail. Evidence download links. Per-type pass rates and KPIs.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4C1;</div>
+                <div class="feature-title">Timestamped Run Folders</div>
+                <div class="feature-desc">Every run creates {STATE}_{YYYY-MM-DD}_{HH-MM-SS}/ folder. Preserves complete history. Includes run-metadata.json with configuration.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4DD;</div>
+                <div class="feature-title">TEST_CASE_GUIDE.md</div>
+                <div class="feature-desc">Plain-English test case descriptions grouped by testing area. Coverage matrix shows which values are tested in which scenario. Anyone can understand.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4C4;</div>
+                <div class="feature-title">Formatted Carrier XML</div>
+                <div class="feature-desc">Raw carrier request/response from framework saved alongside properly indented formatted versions. Human-readable without losing originals.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x23F3;</div>
+                <div class="feature-title">Granular Progress</div>
+                <div class="feature-desc">During execution: "5/25 scenarios completed". During validation: "12/25 validated". Real-time visibility into pipeline progress.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F4C9;</div>
+                <div class="feature-title">Low-Priority Sampling</div>
+                <div class="feature-desc">Occupation, industry, carrier lists: sample 2-3 values only. Fields with 15+ values: ask user first. Prevents scenario explosion.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#x1F504;</div>
+                <div class="feature-title">Request Body Reuse</div>
+                <div class="feature-desc">Checks for existing request bodies before generating. Asks user: "Reuse from previous run or generate fresh?" Saves time on repeated runs.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ OUTPUT STRUCTURE ============ -->
+    <div class="section" id="sec-output">
+        <h2 class="section-title">Output Structure</h2>
+
+        <div class="tree">
+<span class="folder">output/</span>
+├── <span class="folder">test-data/</span>                              <span style="color:#6b7280">← Persists across runs (smart reuse)</span>
+│   └── <span class="file">HOA_HO3_{STATE}_TestData.xlsx</span>
+│
+└── <span class="folder">runs/</span>                                   <span style="color:#6b7280">← Timestamped run folders</span>
+    └── <span class="folder new">TX_2026-04-03_14-30-00/</span>
+        │
+        ├── <span class="folder">request-bodies/</span>                 <span style="color:#6b7280">← JSON scenarios (by type prefix)</span>
+        │   ├── <span class="file" style="color:#93c5fd">rel_001_RoofType___Relevancy.json</span>
+        │   ├── <span class="file" style="color:#93c5fd">crel_001_Foundation_Basement___ConditionalRelevancy.json</span>
+        │   ├── <span class="file" style="color:#bbf7d0">map_001_base_default___Packed.json</span>
+        │   ├── <span class="file" style="color:#bbf7d0">map_002_combo_01___Packed.json</span>
+        │   ├── <span class="file" style="color:#e9d5ff">res_001_base_coverages___ResultPage.json</span>
+        │   ├── <span class="file" style="color:#fed7aa">uud_001_construction_log___UUD.json</span>
+        │   └── <span class="file" style="color:#fed7aa">def_001_base_defaults___Defaults.json</span>
+        │
+        ├── <span class="folder">scenarios/</span>
+        │   ├── <span class="file">HOA_HO3_TX_TestScenarios.xlsx</span>
+        │   └── <span class="file new">TEST_CASE_GUIDE.md</span>        <span style="color:#6b7280">← Plain-English descriptions</span>
+        │
+        ├── <span class="folder">results/</span>                        <span style="color:#6b7280">← Raw + Formatted</span>
+        │   ├── <span class="file">*_carrier_request.txt</span>          <span style="color:#6b7280">← Raw from framework</span>
+        │   ├── <span class="file new">*_carrier_request_formatted.xml</span>  <span style="color:#6b7280">← Pretty-printed</span>
+        │   ├── <span class="file">*_carrier_response.txt</span>
+        │   ├── <span class="file new">*_carrier_response_formatted.xml</span>
+        │   └── <span class="file">*_details.json</span>
+        │
+        ├── <span class="folder new">evidence/</span>                   <span style="color:#6b7280">← FAIL items only</span>
+        │   ├── <span class="file" style="color:#fca5a5">map_003_RoofType_requirement.txt</span>
+        │   ├── <span class="file" style="color:#fca5a5">map_003_RoofType_request_actual.txt</span>
+        │   └── <span class="file" style="color:#fca5a5">map_003_RoofType_response_actual.txt</span>
+        │
+        ├── <span class="folder">reports/</span>
+        │   ├── <span class="file highlight">HOA_HO3_TX_ValidationReport.html</span>  <span style="color:#6b7280">← Tabbed dashboard</span>
+        │   └── <span class="file">HOA_HO3_TX_ValidationSummary.xlsx</span>
+        │
+        └── <span class="file new">run-metadata.json</span>             <span style="color:#6b7280">← Mode, types, timestamp</span>
+        </div>
+    </div>
+
+    <!-- ============ DASHBOARD REPORT ============ -->
+    <div class="section" id="sec-report">
+        <h2 class="section-title">Tabbed Dashboard Report</h2>
+
+        <p style="color: #94a3b8; margin-bottom: 20px;">The HTML validation report uses CSS-only tabs (no JavaScript) with 5 main tabs. Each FAIL row includes downloadable evidence links.</p>
+
+        <!-- Mock tabs -->
+        <div id="report-tabs" style="display:flex; gap:0; margin-bottom:0; flex-wrap:wrap;">
+            <div class="report-tab active" onclick="showReportTab('dash', this)">Overall Dashboard</div>
+            <div class="report-tab" onclick="showReportTab('rel', this)">Relevancy Check</div>
+            <div class="report-tab" onclick="showReportTab('map', this)">Mapping Verification</div>
+            <div class="report-tab" onclick="showReportTab('res', this)">Result Page</div>
+            <div class="report-tab" onclick="showReportTab('uud', this)">UUD & Defaults</div>
+        </div>
+
+        <div style="background:#1e293b; border:2px solid #3b82f6; border-radius:0 8px 8px 8px; padding:24px;" id="report-panels">
+            <div id="rp-dash">
+                <h3 style="color:#f1f5f9; margin-bottom:16px;">Overall Dashboard</h3>
+                <div class="stats-row">
+                    <div class="stat-card"><div class="stat-num blue">25</div><div class="stat-label">Total Scenarios</div></div>
+                    <div class="stat-card"><div class="stat-num green">96.5%</div><div class="stat-label">Pass Rate</div></div>
+                    <div class="stat-card"><div class="stat-num green">22</div><div class="stat-label">API Success</div></div>
+                    <div class="stat-card"><div class="stat-num orange">3</div><div class="stat-label">FAIL Items</div></div>
+                </div>
+                <table class="comp-table" style="margin-top:16px">
+                    <thead><tr><th>Testing Type</th><th>Scenarios</th><th>Passed</th><th>Failed</th><th>Pass Rate</th></tr></thead>
+                    <tbody>
+                        <tr><td>Relevancy</td><td>8</td><td>7</td><td>1</td><td>87.5%</td></tr>
+                        <tr><td>Mapping</td><td>10</td><td>10</td><td>0</td><td>100%</td></tr>
+                        <tr><td>Result Page</td><td>4</td><td>3</td><td>1</td><td>75.0%</td></tr>
+                        <tr><td>UUD & Defaults</td><td>3</td><td>2</td><td>1</td><td>66.7%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rp-rel" style="display:none">
+                <h3 style="color:#f1f5f9; margin-bottom:16px;">Relevancy Check</h3>
+                <p style="color:#94a3b8; margin-bottom:12px;"><em>Sub-tabs: Field Relevancy | Conditional Relevancy</em></p>
+                <table class="comp-table">
+                    <thead><tr><th>#</th><th>Field Name</th><th>Error?</th><th>Expected Values</th><th>API Values</th><th>Match?</th><th>Evidence</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>RoofType</td><td style="color:#4ade80">Yes</td><td>Asphalt, Metal, Tile, Slate</td><td>Asphalt, Metal, Tile, Slate</td><td style="color:#4ade80">PASS</td><td>-</td></tr>
+                        <tr style="background:#7f1d1d22"><td>2</td><td>PLConstructionType</td><td style="color:#4ade80">Yes</td><td>Frame, Masonry, Brick</td><td>Frame, Masonry, Brick, <span style="color:#fca5a5">Steel</span></td><td style="color:#fca5a5">FAIL</td><td><a href="#" style="color:#60a5fa">Download</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rp-map" style="display:none">
+                <h3 style="color:#f1f5f9; margin-bottom:16px;">Mapping Verification</h3>
+                <table class="comp-table">
+                    <thead><tr><th>Scenario</th><th>Field</th><th>Expected</th><th>Actual</th><th>XPath</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>map_002</td><td>RoofType</td><td>1</td><td>1</td><td>/root/.../roofType</td><td style="color:#4ade80">PASS</td></tr>
+                        <tr><td>map_002</td><td>Stories</td><td>1</td><td>1</td><td>/root/.../storyCount</td><td style="color:#4ade80">PASS</td></tr>
+                        <tr><td>map_003</td><td>RoofType</td><td>3</td><td>3</td><td>/root/.../roofType</td><td style="color:#4ade80">PASS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rp-res" style="display:none">
+                <h3 style="color:#f1f5f9; margin-bottom:16px;">Result Page Verification</h3>
+                <table class="comp-table">
+                    <thead><tr><th>Scenario</th><th>Coverage</th><th>Sent</th><th>Response</th><th>Match?</th><th>Evidence</th></tr></thead>
+                    <tbody>
+                        <tr><td>res_001</td><td>Dwelling</td><td>250000</td><td>$250,000</td><td style="color:#4ade80">PASS</td><td>-</td></tr>
+                        <tr style="background:#7f1d1d22"><td>res_002</td><td>Personal Liability</td><td>FiveHundred</td><td>$300,000</td><td style="color:#fca5a5">FAIL</td><td><a href="#" style="color:#60a5fa">Download</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="rp-uud" style="display:none">
+                <h3 style="color:#f1f5f9; margin-bottom:16px;">UUD & Defaults</h3>
+                <p style="color:#94a3b8; margin-bottom:12px;"><em>Sub-tabs: UUD Ineligibility | Defaults Verification</em></p>
+                <table class="comp-table">
+                    <thead><tr><th>Scenario</th><th>Field</th><th>Value</th><th>Declined?</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>uud_001</td><td>PLConstructionType</td><td>Log</td><td style="color:#4ade80">Yes</td><td style="color:#4ade80">PASS</td></tr>
+                        <tr><td>uud_002</td><td>PLConstructionType</td><td>Asbestos</td><td style="color:#4ade80">Yes</td><td style="color:#4ade80">PASS</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="text-align:center; padding:30px; color:#475569; font-size:0.85em; border-top:1px solid #1e293b; margin-top:40px;">
+    HOA Testing Agent &mdash; Built with Claude Code (Opus 4.6) &mdash; Bolt Insurance Platform
+</div>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('sec-' + id).classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+
+    function toggleDetail(el) {
+        const detail = el.nextElementSibling;
+        if (detail.classList.contains('open')) {
+            detail.classList.remove('open');
+            el.textContent = '+ Show details';
+        } else {
+            detail.classList.add('open');
+            el.textContent = '- Hide details';
+        }
+    }
+
+    function showReportTab(tab, clickedEl) {
+        ['dash','rel','map','res','uud'].forEach(t => {
+            document.getElementById('rp-' + t).style.display = t === tab ? 'block' : 'none';
+        });
+        document.querySelectorAll('.report-tab').forEach(t => t.classList.remove('active'));
+        clickedEl.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

@@ -58,98 +58,135 @@ This document captures the business logic, decisions, learnings, and requirement
 
 **User provides:** Requirement document + target state
 **Agent produces:**
-1. **Test data in Excel** -- all columns from requirement doc preserved, last column = reference (sheet, row where data came from). State-specific filtering applied.
-2. **JSON request bodies** -- multiple scenarios covering different blinds/coverages/conditions
-3. **Test execution results** -- graphical format showing pass/fail after validation
+1. **Test data in Excel** -- state-filtered, with smart reuse (skip if unchanged, incremental update if minor changes)
+2. **JSON request bodies** -- combinatorially optimized (packed scenarios, not one-field-per-request)
+3. **Test execution results** -- tabbed HTML dashboard with bug evidence links
 
-**Internally, the agent:**
-- Creates test data for the state
-- Creates JSON request bodies for different scenarios
-- Uses the reusable C# framework to send requests and retrieve request/response from support site
-- Validates request mapping and response mapping
-- Produces final results
+**The agent supports 4 testing types:**
+1. **Relevancy** -- remove a field → check API validation error + compare available values with requirement doc
+2. **Mapping** -- verify field values map correctly from Bolt Enum to carrier XML
+3. **Result Page** -- verify coverages display correctly in API response
+4. **UUD & Defaults** -- verify ineligibility rules trigger decline; verify all 20 defaults are present
+
+**Two testing modes:**
+- **Focused** -- user describes affected areas → agent tests ONLY those fields exhaustively
+- **Overall** -- full regression covering ALL fields with combinatorial packing
 
 ---
 
 ## 4. TEST DATA GENERATION — CRITICAL RULES
 
+### Smart Reuse (Check Before Generating)
+- If test data exists AND requirement doc timestamp hasn't changed → SKIP entirely
+- If test data exists BUT requirement doc has changes → diff and incrementally update only changed items, report changes to user
+- If test data doesn't exist → generate from scratch
+
 ### State Filtering
 - Include rows where State column is blank/empty/None/"All States"
 - Include rows where target state is listed
 - Exclude rows where target state is NOT listed
-- Handle "Not in [STATE]" and "<>" (not equal) patterns
-- "All States" or blank = applies everywhere
+- Handle "Not in [STATE]" and "NOT USED FOR" patterns
 
 ### List Sheet Handling (CRITICAL)
-- **Field relevancy drives list inclusion:** If a field is NOT relevant for the target state (excluded during state filtering), its corresponding list values should also be excluded
-- **Bolt values are DATA, not filters:** The Interview Value column contains selectable dropdown options. NEVER apply state filtering on these values themselves. Even if values look like state codes, they are dropdown options.
-- **Filter using Carrier States column only:** In the Lists sheet, only the `Carrier States` column determines which values apply to which states
-- **Bolt Condition column:** Used mainly for occupation sublists (e.g., "Agriculture/Forestry/Fishing" conditions OccupationStrList values)
-- **Include ALL values for an included list** unless Carrier States restricts specific values
-
-### Coverage Rules
-- HOA coverages are fields in the Policy blind with list values (PLPersonalLiabilityList, DwellingMedicalPaymentsList, PLAllPerilsDeductibleList, etc.)
-- Include only coverages applicable to the target state
-- Add new coverages if they exist for the state but not in a template
-- Completely omit coverages not applicable -- no "Not applicable" messages
+- **Field relevancy drives list inclusion:** If a field is excluded for the state, its list values are also excluded
+- **Bolt values are DATA, not filters:** Interview Value column contains dropdown options, NEVER filter based on these
+- **Filter using Carrier States column only**
+- **Bolt Condition column:** Used mainly for occupation sublists
 
 ### Test Data Output Format
-- Keep ALL columns from the requirement document -- do NOT remove any
+- Keep ALL columns from the requirement document
 - Add a LAST column: `Reference` -- format: `(Sheet: [SheetName], Row: [RowNumber])`
-- This is the only addition to the original column structure
+- Preserve formatting, hyperlinks, freeze panes, auto-filter
 
 ---
 
 ## 5. REQUEST BODY GENERATION — CRITICAL RULES
 
+### Combinatorial Optimization (CRITICAL)
+- **Do NOT create one request body per field.** Pack multiple independent fields from ALL blinds into each request body.
+- Independent fields (no relevancy condition linking them) vary TOGETHER. Scenarios = MAX(value count), not SUM.
+- Dependent fields (parent-child) get their combinations tested explicitly and overlaid onto the packed matrix.
+- Example: 3 booleans + 5-value dropdown + 4-value dropdown = 5 scenarios (not 14).
+
+### Low-Priority Fields
+- **Sample, don't exhaust:** CurrentPersonalHomeownerCarrierList, CurrentPersonalAutoCarrierList, PLLossDescriptionList, EmploymentIndustryList, OccupationStrList — sample 2-3 values only
+- **Start and Applicant blinds:** minimal variation (address/contact/name fields not critical for carrier mapping)
+- **15+ value threshold:** ask user before exhaustive testing; default to 3-5 sampled values
+
+### Request Body Reuse
+- Before generating, check if previous run exists for the state
+- Ask user: reuse existing or generate fresh?
+
 ### The Sample Request Body
 - Is a valid, complete request for the carrier
-- Fields in request but NOT in test data = other-carrier fields, KEEP AS-IS (multi-carrier request body)
-- Fields with "Do not send" / blank XPath in test data = Bolt display-only fields, KEEP in request for other carriers but don't modify for HOA
+- Fields in request but NOT in test data = other-carrier fields, KEEP AS-IS
+- Fields with "Do not send" / blank XPath = Bolt display-only, KEEP for other carriers
 
 ### None / NoCoverage / Reject
 - These are REAL Enum values you SEND in the request
 - NOT the same as commenting out or removing the field
-- The carrier processes "received with None" differently from "field not present"
 
-### Commenting Out Fields
-- ONLY when a specific condition in the test data says "disable" / "do not display" / "gray out" for a specific scenario
-- Every comment-out must cite the specific rule and source row
-- NEVER comment out based on assumptions
+### File Prefixes by Testing Type
+| Type | Prefix |
+|---|---|
+| Relevancy (field) | `rel_` |
+| Relevancy (conditional) | `crel_` |
+| Mapping | `map_` |
+| Result Page | `res_` |
+| UUD | `uud_` |
+| Defaults | `def_` |
 
-### Adding Fields
-- ONLY when a specific condition in the test data says "display" / "send" and the condition is triggered
-- The sample request represents one scenario -- other scenarios may need additional fields
-- Every addition must cite the condition and source
-
-### Scenario Organization
-- Organized by Blind (Start, Home, Structure, Features, Policy, Applicant, CrossBlind)
-- File naming: `req_[NNN]_[description]___[BlindName].json`
-- Triple underscore before blind name for easy parsing
-
-### Output
-1. Folder with all JSON files
-2. Test Scenario Document (Excel) with: Scenario Summary, Field Value Matrix, Conditional Rules, Coverage Value Reference, Fields Removed/Added
+### Output per Run
+1. JSON scenario files in timestamped run folder
+2. TEST_CASE_GUIDE.md — plain-English descriptions grouped by testing area with coverage matrix
+3. Test Scenario Document (Excel)
+4. run-metadata.json — mode, types, timestamp, scenario count
 
 ---
 
 ## 6. VALIDATION RULES
 
-### Request Mapping Validation
-- For each field with an XPath in test data:
-  - Was the value sent to the correct path?
-  - Does the sent value match the expected Enum/Mapping?
-  - Were "Do not send" fields correctly omitted?
-  - Were conditional rules respected?
-- "Do not send" + "Unable to extract value" = PASS (correctly omitted)
+### Validation by Testing Type (auto-detected by file prefix)
 
-### Response Mapping Validation
-- For each Result Page entry:
-  - Does the response contain the expected coverage/field?
-  - Does the display format match?
+**Relevancy Validation (`rel_`, `crel_`):**
+- Check API returned validation error when field removed
+- Parse available values from error message
+- Compare with requirement doc's list values → mismatch = bug
+- For conditional: verify parent-child triggering/non-triggering behavior
 
-### End-to-end trace
-- Test Data Enum -> Request Value Sent -> Response Display Value -> Expected Mapping
+**Mapping Validation (`map_`):**
+- For each HOA field with XPath: extract value from carrier request XML, compare with expected
+- Check Defaults and Extras are present
+- "Do not send" + value not found in XML = PASS
+
+**Result Page Validation (`res_`):**
+- Check response contains coverages with correct values
+- Verify premium = annualTotalUsd + annualFeesUsd
+
+**UUD/Default Validation (`uud_`, `def_`):**
+- UUD: verify API declined with correct error
+- Defaults: verify all 20 defaults at correct XPaths
+
+### Bug Evidence Collection (ALL testing types)
+When any check FAILs, collect 3 evidence files from:
+1. **Requirement document** (ORIGINAL client-provided doc, NOT test data)
+2. **Carrier request** (what was sent)
+3. **Carrier response** (what was received)
+
+Evidence formats vary by type. All stored in `output/runs/{RUN}/evidence/`. Linked from HTML dashboard FAIL rows.
+
+### Tabbed HTML Report
+```
+[Overall Dashboard] [Relevancy Check] [Mapping Verification] [Result Page] [UUD & Defaults]
+```
+- Relevancy has sub-tabs: Field Relevancy | Conditional Relevancy
+- UUD has sub-tabs: UUD Ineligibility | Defaults Verification
+- CSS-only tabs (no JavaScript)
+- Every FAIL row includes downloadable evidence links
+
+### Progress Display
+- During test execution: `5/25 scenarios completed` (monitor framework output folder)
+- During validation: `5/25 validated` (per-scenario progress)
 
 ---
 
@@ -157,71 +194,31 @@ This document captures the business logic, decisions, learnings, and requirement
 
 ### Solution: MappingVerification.sln (5 projects)
 
-**API Collection:**
-- `APIConstants.cs` -- endpoints: CREATE_QUOTE, SUBMIT_QUOTE, GET_RESULT
-- Environment configs: QA.json, UAT.json (base URLs, API keys)
-- Request templates: PersonalAuto.json, PersonalHome.json, Renters.json
+**DO NOT MODIFY any framework code.** Agent only interacts via file I/O and `dotnet test`.
 
-**CoreLogic:**
-- `CommonBaseTest.cs` -- `SendAndRetrieve()` sends request, retrieves from PolicyViewer, saves results to output folder.
-- `APIManager.cs` -- RestSharp: CreateQuote -> SubmitQuote -> GetResults. Gets FriendlyId from response.
-- `EnvironmentConfigurationManager.cs` -- resolves environment config file paths
-- `PolicyViewerUrlManager.cs` -- builds PolicyViewer URLs per environment
-- `RequestManager.cs` -- resolves request template file paths
-- `Credentials.cs` -- PolicyViewer login credentials
-
-**PolicyViewer:**
-- `PolicyViewerPage.cs` -- Selenium: navigates to support site, selects tenant, searches by F#, clicks "Show Stage Details", retrieves Request/Response/ResultMessages text from new windows
-- `SubmissionHandler.cs` -- orchestrates PolicyViewer retrieval, handles different statuses (Success, Declined, Failed, SubmissionReferral, TechnicalError)
-- `DriverManager.cs` -- thread-safe ChromeDriver management
-- `BasePage.cs` -- Selenium page object base
-
-**Utility:**
-- `JsonReader.cs` -- reads/updates JSON, adds key-value pairs at paths
-- `DataReader.cs` -- extracts values from XML (XPath) and JSON (JSONPath)
-- `Helper.cs` -- path resolution, test result comparison, filename sanitization
-- `PropertyAddress.cs` -- updates address in request body
-- `Reporter.cs` -- ExtentReport logging
-- `ExtentReportBase.cs` -- report initialization and flushing
-- `JsonCommentStripper.cs` -- strips // comments from Claude's JSON
-
-**TestProject:**
-- `Test.cs` -- reads .json files from RequestBodies/ folder, each file = one NUnit test case
-- `config.json` -- carrier, LOB, environment, tenant, request format configuration
+**API Collection:** Endpoints, environment configs (QA.json, UAT.json), request templates
+**CoreLogic:** `SendAndRetrieve()` sends request, retrieves from PolicyViewer, saves results
+**PolicyViewer:** Selenium: navigates support site, searches by F#, retrieves Request/Response text
+**Utility:** JSON/XML readers, path resolution, ExtentReport, JsonCommentStripper
+**TestProject:** `Test.cs` reads .json files from RequestBodies/ folder, each file = one NUnit test case
 
 ### Framework Flow
 ```
 RequestBodies/ folder (JSON files)
-    |
-Test.cs reads each .json file -> strips comments -> creates test case
-    |
-CommonBaseTest.SendAndRetrieve():
-    -> Parse JSON request body
-    -> RestSharp: POST /getquote/v0/api/applications (CreateQuote)
-    -> Extract applicationId
-    -> POST /getquote/v0/api/applications/{id}/submission (SubmitQuote)
-    -> GET /getquote/v0/api/applications/{id}/submission (GetResults, poll until Completed)
-    -> Extract FriendlyId from CreateQuote response
-    |
-PolicyViewer (Selenium):
-    -> Navigate to support site URL
-    -> Select tenant from dropdown
-    -> Search by FriendlyId
-    -> Click "Show Stage Details"
-    -> Click "Request" button -> new window -> extract text from textarea
-    -> Click "Response" button -> new window -> extract text from textarea
-    |
-Save to Output/{Carrier}/{State}/ folder:
-    -> Per request: {name}_carrier_request.txt, {name}_carrier_response.txt, {name}_details.json, {name}_request.json
-    |
-ExtentReport HTML generated
+    → Test.cs reads each .json → strips comments → creates test case
+    → RestSharp: CreateQuote → SubmitQuote → GetResults (poll until Completed)
+    → Extract FriendlyId
+    → PolicyViewer (Selenium): search F# → retrieve Request/Response text
+    → Save to Output/{Carrier}/{State}/:
+        {name}_carrier_request.txt, {name}_carrier_response.txt,
+        {name}_details.json, {name}_request.json
+    → ExtentReport HTML generated
 ```
 
 ### Key Technical Details
-- NuGet packages: RestSharp 112.1.0, Selenium.WebDriver 4.27.0, EPPlus 7.5.2, Newtonsoft.Json 13.0.3, ExtentReports 5.0.4, NUnit 4.3.2
-- .NET 8.0
-- JSON requests always sent to Bolt API (even for XML-format carriers -- Bolt converts)
-- Carrier request format (XML/JSON) determines how validation extracts values from the actual carrier request
+- .NET 8.0, NUnit 4.3.2, RestSharp 112.1.0, Selenium.WebDriver 4.27.0
+- JSON requests always sent to Bolt API (Bolt converts to carrier format)
+- Carrier request format (XML) determines validation extraction method
 
 ---
 
@@ -229,23 +226,19 @@ ExtentReport HTML generated
 
 | Decision | Choice | Reason |
 |---|---|---|
-| Single agent vs separate projects | Single agent (Claude Code) for HOA | More professional, covers more Claude features, everything in one place |
-| Test data output format | Keep all columns + add Reference column | User doesn't want any columns removed |
-| List filtering | Field relevancy drives list inclusion | If field is excluded for state, its list values are also excluded |
-| Bolt values | NEVER filter as state conditions | They are dropdown DATA, not filters |
-| None vs Comment-out | Distinct behaviors | None = real value sent; Comment-out = field absent due to condition |
-| Request body fields not in test data | Keep as-is | They're carrier-essential |
-| Condition-driven add/remove | Both directions from test data Rules | Conditions can add child fields AND disable/hide fields |
-| Framework approach | Simplified send-and-retrieve | Claude handles intelligence; framework handles API/browser |
-| Output format | Test data Excel + JSON bodies + graphical results | User wants all three |
-
----
-
-## 9. IMPORTANT REMINDERS
-
-- **HOA's structure is simpler** -- 2 primary sheets (Interview + Lists), no complex MappingData bands
-- **State filtering is predictable** -- Interview `State` column + Lists `Carrier States` column
-- **Relevancy conditions are code-like** -- parseable expressions like `a.FieldName == Type.Value`
-- **Defaults and Extras** -- 20 hardcoded values that go in every request, some state-conditional
-- **Request format is XML** -- XPaths like `/root/propertyAddress/line1`
-- **Model recommendation:** Opus 4.6 + Extended Thinking ON
+| Single agent | Claude Code for HOA | Everything in one place, leverages Claude Code features |
+| Test data output format | Keep all columns + Reference column | User wants nothing removed |
+| Test data reuse | Smart skip/incremental/fresh | Avoid unnecessary regeneration |
+| Combinatorial packing | Pack independent fields across all blinds | Drastically reduces scenarios while maintaining coverage |
+| Low-priority sampling | 2-3 values for occupation/industry/carrier lists | Hundreds of values but not mapping-critical |
+| 15+ value threshold | Ask user first | Prevents scenario explosion |
+| File prefixes by type | `rel_`, `crel_`, `map_`, `res_`, `uud_`, `def_` | Auto-detection during validation |
+| Bug evidence | 3 files per FAIL from requirement doc/request/response | Clear documentation for all test types |
+| Timestamped run folders | `{STATE}_{YYYY-MM-DD}_{HH-MM-SS}/` | Preserve history, no overwrites |
+| Formatted XML | Pretty-print alongside raw files | Human-readable without losing originals |
+| Tabbed HTML report | CSS-only tabs, no JavaScript | Portable, no dependencies |
+| Testing modes | Focused (specific) + Overall (regression) | Most testing is about specific changes |
+| Testing types | 4 types with distinct validation | Relevancy, Mapping, Result Page, UUD/Defaults |
+| None vs Comment-out | Distinct behaviors | None = real value sent; Comment-out = field absent |
+| Multi-carrier rule | Only modify HOA fields (with XPath) | Other carriers need their fields intact |
+| Framework | DO NOT MODIFY | Team uses it; agent only does file I/O |

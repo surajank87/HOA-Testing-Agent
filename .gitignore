@@ -1,5 +1,6 @@
 # Output files (regenerated each run)
 output/test-data/
+output/runs/
 output/request-bodies/
 output/scenarios/
 output/results/

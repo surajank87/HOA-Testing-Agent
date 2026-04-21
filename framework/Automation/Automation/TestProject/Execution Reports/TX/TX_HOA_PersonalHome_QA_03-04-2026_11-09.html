@@ -1,0 +1,3305 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title></title>
+ <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/commons/img/logo.png">
+ <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/commons/img/logo.png">
+ <link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@78fa5a2421587b8228150e93142e5ba97178e85b/spark/css/spark-style.css" rel="stylesheet" />
+ <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@78fa5a2421587b8228150e93142e5ba97178e85b/spark/js/jsontree.js"></script>
+ <style></style>
+</head>
+<body class="spa  standard">
+ <div class="app">
+  <div class="layout">
+   <div class="header navbar">
+ <div class="vheader">
+  <div class="nav-logo">
+   <a href="#">
+	 <div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c43b89d03a7c43dae8bb8f0f078bad1997af6b3b/commons/img/logo.png')"></div>
+   </a>
+  </div>
+  <ul class="nav-left">
+   <li class="search-box">
+	<a class="search-toggle" href="#"><i class="search-icon fa fa-search"></i><i class="search-icon-close fa fa-close"></i></a>
+   </li>
+   <li class="search-input">
+    <input id="search-tests" class="form-control" type="text" placeholder="Search...">
+   </li>
+  </ul>
+  <ul class="nav-right">
+   <li class="m-r-10"><a href="#"><span class="badge badge-primary">Test Execution Report</span></a></li>
+   <li class="m-r-10">
+    <a href="#"><span class="badge badge-primary">4/3/2026 10:38:23 AM</span></a>
+   </li>
+  </ul>
+ </div>
+</div>
+   <div class="side-nav">
+ <div class="side-nav-inner">
+  <ul class="side-nav-menu">
+   <li class="nav-item dropdown" onclick="toggleView('test-view')">
+    <a id="nav-test" class="dropdown-toggle" href="#">
+     <span class="ico"><i class="fa fa-list"></i></span>
+    </a>
+   </li>
+   <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+    <a id="nav-dashboard" class="dropdown-toggle" href="#">
+     <span class="ico"><i class="fa fa-bar-chart"></i></span>
+    </a>
+   </li>
+  </ul>
+ </div>
+</div>
+
+   <div class="vcontainer">
+    <div class="main-content">
+     
+
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+      <ul class="tools pull-left">
+        <li><a href="#"><span class="font-size-14">Tests</span></a></li>
+      </ul>
+      <ul class="tools text-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+          <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+ <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>  <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>  <a class="dropdown-item" status="warning" href="#"><span>Warning</span><span class="status warning"></span></a>             <div class="dropdown-divider"></div>
+            <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item" status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_001_FireDetection_FireDetectionType_present___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:38:28 AM</span> / <span>56262.65 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">crel_001_FireDetection_FireDetectionType_present___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:38:28 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:39:24 AM</span>
+                  <span class='badge badge-default'>56262.65 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>5.06</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="2">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 10:39:24</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>0794-3261-5846</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:39:24</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:39:24</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_002_FireDetection_FireDetectionType_absent___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:39:28 AM</span> / <span>62400.14 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">crel_002_FireDetection_FireDetectionType_absent___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:39:28 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:40:30 AM</span>
+                  <span class='badge badge-default'>62400.14 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.28</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="4">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:40:30</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>3059-7218-4680</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_003_BurglarAlarm_BurglarAlarmType_present___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:40:35 AM</span> / <span>29792.51 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">crel_003_BurglarAlarm_BurglarAlarmType_present___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:40:35 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:41:04 AM</span>
+                  <span class='badge badge-default'>29792.51 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.08</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="6">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 10:41:04</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2580-9647-3117</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:41:04</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:41:04</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_004_BurglarAlarm_BurglarAlarmType_absent___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:41:07 AM</span> / <span>48797.8 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">crel_004_BurglarAlarm_BurglarAlarmType_absent___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:41:07 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:41:56 AM</span>
+                  <span class='badge badge-default'>48797.8 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="8">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:41:56</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>8175-6042-3937</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_005_CurrentPersonalHomeownerCarrier_PriorCarrierExperationDate_present___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:41:58 AM</span> / <span>56647.85 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">crel_005_CurrentPersonalHomeownerCarrier_PriorCarrierExperationDate_present___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:41:58 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:42:55 AM</span>
+                  <span class='badge badge-default'>56647.85 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="10">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:42:55</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5791-0482-3632</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=5791-0482-3632&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">crel_006_CurrentPersonalHomeownerCarrier_PriorCarrierExperationDate_absent___ConditionalRelevancy</p>
+            <p class="text-sm">
+              <span>10:42:58 AM</span> / <span>60022.03 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">crel_006_CurrentPersonalHomeownerCarrier_PriorCarrierExperationDate_absent___ConditionalRelevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:42:58 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:43:59 AM</span>
+                  <span class='badge badge-default'>60022.03 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="12">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:43:59</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5086-9743-1228</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="13"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">def_001_base_defaults___Defaults</p>
+            <p class="text-sm">
+              <span>10:44:02 AM</span> / <span>54537.95 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">def_001_base_defaults___Defaults</h5>
+                  <span class='badge badge-success'>4/3/2026 10:44:02 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:44:57 AM</span>
+                  <span class='badge badge-default'>54537.95 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.18</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="14">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:44:57</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>8274-5390-6164</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=8274-5390-6164&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="15"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">def_002_low_replacement___Defaults</p>
+            <p class="text-sm">
+              <span>10:45:00 AM</span> / <span>55051.59 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">def_002_low_replacement___Defaults</h5>
+                  <span class='badge badge-success'>4/3/2026 10:45:00 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:45:55 AM</span>
+                  <span class='badge badge-default'>55051.59 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=15</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="16">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:45:55</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6384-2170-9508</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="17"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_001_base_default___Packed</p>
+            <p class="text-sm">
+              <span>10:45:58 AM</span> / <span>48911.96 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_001_base_default___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:45:58 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:46:47 AM</span>
+                  <span class='badge badge-default'>48911.96 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=17</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="18">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:46:47</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>7526-4103-9854</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="19"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_002_combo_01___Packed</p>
+            <p class="text-sm">
+              <span>10:46:50 AM</span> / <span>32431.2 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_002_combo_01___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:46:50 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:47:23 AM</span>
+                  <span class='badge badge-default'>32431.2 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=19</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.04</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="20">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:47:23</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6498-2517-3075</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="21"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_003_combo_02___Packed</p>
+            <p class="text-sm">
+              <span>10:47:27 AM</span> / <span>25479.7 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_003_combo_02___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:47:27 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:47:52 AM</span>
+                  <span class='badge badge-default'>25479.7 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=21</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="22">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:47:52</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>8156-4072-9312</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="23"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_004_combo_03___Packed</p>
+            <p class="text-sm">
+              <span>10:47:55 AM</span> / <span>27206.22 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_004_combo_03___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:47:55 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:48:22 AM</span>
+                  <span class='badge badge-default'>27206.22 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=23</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="24">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:48:22</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>3796-4852-1021</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="warning" test-id="25"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_005_combo_04___Packed</p>
+            <p class="text-sm">
+              <span>10:48:25 AM</span> / <span>47724.48 ms</span>
+              <span class="badge warning-bg log float-right">Warning</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-warning">map_005_combo_04___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:48:25 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:49:13 AM</span>
+                  <span class='badge badge-default'>47724.48 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=25</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge warning-bg log ">Warning</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.17</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="26">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>Apr 03, 2026 10:49:13</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>7614-9825-0370</td></tr><tr><td>Submission Status</td><td>Failed</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:49:13</td>
+        <td>
+Response        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:49:13</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><Response>
+  <Root>
+    <MESSAGE>Coverage: requiredDwellingAttributes | Roofs with structure type Slate are ineligible for coverage.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="27"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_006_combo_05___Packed</p>
+            <p class="text-sm">
+              <span>10:49:16 AM</span> / <span>24515.68 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_006_combo_05___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:49:16 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:49:41 AM</span>
+                  <span class='badge badge-default'>24515.68 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=27</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="28">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:49:41</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5179-6423-0804</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=5179-6423-0804&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="warning" test-id="29"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_007_combo_06___Packed</p>
+            <p class="text-sm">
+              <span>10:49:44 AM</span> / <span>31968.52 ms</span>
+              <span class="badge warning-bg log float-right">Warning</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-warning">map_007_combo_06___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:49:44 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:50:16 AM</span>
+                  <span class='badge badge-default'>31968.52 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=29</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge warning-bg log ">Warning</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="30">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>Apr 03, 2026 10:50:16</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>1953-0246-8714</td></tr><tr><td>Submission Status</td><td>Failed</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:50:16</td>
+        <td>
+Response        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:50:16</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><Response>
+  <Root>
+    <MESSAGE>Coverage: requiredDwellingAttributes | Roofs with structure type Wood are ineligible for coverage.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="31"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_008_combo_07___Packed</p>
+            <p class="text-sm">
+              <span>10:50:19 AM</span> / <span>30303.15 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_008_combo_07___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:50:19 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:50:49 AM</span>
+                  <span class='badge badge-default'>30303.15 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=31</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.04</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="32">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:50:49</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5697-2340-1891</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="33"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_009_combo_08___Packed</p>
+            <p class="text-sm">
+              <span>10:50:52 AM</span> / <span>28475.37 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_009_combo_08___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:50:52 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:51:20 AM</span>
+                  <span class='badge badge-default'>28475.37 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=33</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.1</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="34">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:51:20</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>1389-2054-7689</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="35"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_010_combo_09___Packed</p>
+            <p class="text-sm">
+              <span>10:51:24 AM</span> / <span>49619.45 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_010_combo_09___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:51:24 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:52:14 AM</span>
+                  <span class='badge badge-default'>49619.45 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=35</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="36">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:52:14</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>4126-5738-0973</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=4126-5738-0973&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="37"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_011_combo_10___Packed</p>
+            <p class="text-sm">
+              <span>10:52:16 AM</span> / <span>30516.8 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_011_combo_10___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:52:16 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:52:47 AM</span>
+                  <span class='badge badge-default'>30516.8 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=37</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.05</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="38">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:52:47</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2193-0658-7415</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=2193-0658-7415&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="warning" test-id="39"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_012_combo_11___Packed</p>
+            <p class="text-sm">
+              <span>10:52:50 AM</span> / <span>38921.59 ms</span>
+              <span class="badge warning-bg log float-right">Warning</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-warning">map_012_combo_11___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:52:50 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:53:29 AM</span>
+                  <span class='badge badge-default'>38921.59 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=39</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge warning-bg log ">Warning</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.04</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="40">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>Apr 03, 2026 10:53:29</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>4318-0752-9621</td></tr><tr><td>Submission Status</td><td>Failed</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=4318-0752-9621&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:53:29</td>
+        <td>
+Response        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:53:29</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><Response>
+  <Root>
+    <MESSAGE>Coverage: requiredDwellingAttributes | Roofs with structure type Slate are ineligible for coverage.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="41"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_013_combo_12___Packed</p>
+            <p class="text-sm">
+              <span>10:53:33 AM</span> / <span>30303.27 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_013_combo_12___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:53:33 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:54:03 AM</span>
+                  <span class='badge badge-default'>30303.27 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=41</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="42">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:54:03</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>3627-0458-9141</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=3627-0458-9141&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="warning" test-id="43"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_014_combo_13___Packed</p>
+            <p class="text-sm">
+              <span>10:54:07 AM</span> / <span>31212.68 ms</span>
+              <span class="badge warning-bg log float-right">Warning</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-warning">map_014_combo_13___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:54:07 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:54:38 AM</span>
+                  <span class='badge badge-default'>31212.68 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=43</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge warning-bg log ">Warning</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.11</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="44">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>Apr 03, 2026 10:54:38</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2795-8013-4684</td></tr><tr><td>Submission Status</td><td>Failed</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:54:38</td>
+        <td>
+Response        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:54:38</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><Response>
+  <Root>
+    <MESSAGE>Coverage: requiredDwellingAttributes | Roofs with structure type Wood are ineligible for coverage.</MESSAGE>
+    <ERRORDETAIL></ERRORDETAIL>
+    <ERROR>true</ERROR>
+  </Root>
+</Response></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="45"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_015_combo_14___Packed</p>
+            <p class="text-sm">
+              <span>10:54:41 AM</span> / <span>38388.81 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_015_combo_14___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:54:41 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:55:19 AM</span>
+                  <span class='badge badge-default'>38388.81 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=45</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.04</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="46">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:55:19</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>0794-1682-3551</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=0794-1682-3551&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="47"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">map_016_combo_15___Packed</p>
+            <p class="text-sm">
+              <span>10:55:22 AM</span> / <span>27370.73 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">map_016_combo_15___Packed</h5>
+                  <span class='badge badge-success'>4/3/2026 10:55:22 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:55:50 AM</span>
+                  <span class='badge badge-default'>27370.73 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=47</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="48">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:55:50</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>3109-5827-6495</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="49"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_001_PLConstructionType___Relevancy</p>
+            <p class="text-sm">
+              <span>10:55:53 AM</span> / <span>45994.63 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_001_PLConstructionType___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:55:53 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:56:39 AM</span>
+                  <span class='badge badge-default'>45994.63 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=49</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="50">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:56:39</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>0317-4685-9218</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="51"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_002_PLNumberOfStories___Relevancy</p>
+            <p class="text-sm">
+              <span>10:56:42 AM</span> / <span>54304.89 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_002_PLNumberOfStories___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:56:42 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:57:37 AM</span>
+                  <span class='badge badge-default'>54304.89 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=51</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="52">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:57:37</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6718-0294-5389</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="53"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_003_RoofType___Relevancy</p>
+            <p class="text-sm">
+              <span>10:57:39 AM</span> / <span>48214.26 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_003_RoofType___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:57:39 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:58:28 AM</span>
+                  <span class='badge badge-default'>48214.26 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=53</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="54">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:58:28</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>7428-0193-6548</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="55"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_004_PlumbingType___Relevancy</p>
+            <p class="text-sm">
+              <span>10:58:31 AM</span> / <span>26051.6 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_004_PlumbingType___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:58:31 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:58:57 AM</span>
+                  <span class='badge badge-default'>26051.6 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=55</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="56">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 10:58:57</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2035-8764-9163</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="57"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_005_PLPersonalLiability___Relevancy</p>
+            <p class="text-sm">
+              <span>10:59:00 AM</span> / <span>19027.42 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">rel_005_PLPersonalLiability___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:59:00 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:59:19 AM</span>
+                  <span class='badge badge-default'>19027.42 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=57</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="58">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 10:59:19</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>0976-2354-8195</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:59:19</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:59:19</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="59"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_006_DwellingMedicalPayments___Relevancy</p>
+            <p class="text-sm">
+              <span>10:59:22 AM</span> / <span>18880.02 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">rel_006_DwellingMedicalPayments___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:59:22 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 10:59:41 AM</span>
+                  <span class='badge badge-default'>18880.02 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=59</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="60">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 10:59:41</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6372-5890-1478</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:59:41</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 10:59:41</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="61"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_007_PLAllPerilsDeductible___Relevancy</p>
+            <p class="text-sm">
+              <span>10:59:44 AM</span> / <span>21776.95 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">rel_007_PLAllPerilsDeductible___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 10:59:44 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:00:05 AM</span>
+                  <span class='badge badge-default'>21776.95 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=61</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="62">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 11:00:05</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>4925-0187-6373</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:00:05</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:00:05</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="63"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_008_WindstormDeductible___Relevancy</p>
+            <p class="text-sm">
+              <span>11:00:08 AM</span> / <span>52616.2 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_008_WindstormDeductible___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 11:00:08 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:01:00 AM</span>
+                  <span class='badge badge-default'>52616.2 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=63</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="64">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:01:00</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6951-8240-7334</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="65"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_009_CurrentPersonalHomeownerCarrier___Relevancy</p>
+            <p class="text-sm">
+              <span>11:01:03 AM</span> / <span>24148.69 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">rel_009_CurrentPersonalHomeownerCarrier___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 11:01:03 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:01:27 AM</span>
+                  <span class='badge badge-default'>24148.69 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=65</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.05</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="66">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:01:27</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>7846-3905-1231</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="67"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_010_FireDetectionType___Relevancy</p>
+            <p class="text-sm">
+              <span>11:01:31 AM</span> / <span>21964.39 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">rel_010_FireDetectionType___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 11:01:31 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:01:53 AM</span>
+                  <span class='badge badge-default'>21964.39 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=67</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.53</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="68">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 11:01:53</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>1970-4328-6595</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:01:53</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:01:53</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="fail" test-id="69"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">rel_011_BurglarAlarmType___Relevancy</p>
+            <p class="text-sm">
+              <span>11:01:55 AM</span> / <span>17082.63 ms</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-fail">rel_011_BurglarAlarmType___Relevancy</h5>
+                  <span class='badge badge-success'>4/3/2026 11:01:55 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:02:12 AM</span>
+                  <span class='badge badge-default'>17082.63 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=69</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge fail-bg log ">Fail</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="70">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>Apr 03, 2026 11:02:12</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>1653-9270-8456</td></tr><tr><td>Submission Status</td><td>SubmissionReferral</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=1653-9270-8456&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:02:12</td>
+        <td>
+Referral List        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>Apr 03, 2026 11:02:12</td>
+        <td>
+<div class='row'><div class='col-md-12'><textarea readonly class='code-block'><ReferralList>
+  <string>Not enough info to submit.</string>
+</ReferralList></textarea></div></div>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="71"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">res_001_cov_combo_1___ResultPage</p>
+            <p class="text-sm">
+              <span>11:02:15 AM</span> / <span>46764.49 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">res_001_cov_combo_1___ResultPage</h5>
+                  <span class='badge badge-success'>4/3/2026 11:02:15 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:03:01 AM</span>
+                  <span class='badge badge-default'>46764.49 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=71</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="72">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:03:01</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>1624-3985-7007</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="73"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">res_002_cov_combo_2___ResultPage</p>
+            <p class="text-sm">
+              <span>11:03:05 AM</span> / <span>40280.54 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">res_002_cov_combo_2___ResultPage</h5>
+                  <span class='badge badge-success'>4/3/2026 11:03:05 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:03:45 AM</span>
+                  <span class='badge badge-default'>40280.54 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=73</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="74">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:03:45</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5109-4376-8259</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="75"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">res_003_cov_combo_3___ResultPage</p>
+            <p class="text-sm">
+              <span>11:03:49 AM</span> / <span>47300.06 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">res_003_cov_combo_3___ResultPage</h5>
+                  <span class='badge badge-success'>4/3/2026 11:03:49 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:04:36 AM</span>
+                  <span class='badge badge-default'>47300.06 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=75</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="76">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:04:36</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2704-5861-9313</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=2704-5861-9313&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="77"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">res_004_cov_combo_4___ResultPage</p>
+            <p class="text-sm">
+              <span>11:04:39 AM</span> / <span>51685.19 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">res_004_cov_combo_4___ResultPage</h5>
+                  <span class='badge badge-success'>4/3/2026 11:04:39 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:05:31 AM</span>
+                  <span class='badge badge-default'>51685.19 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=77</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.03</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="78">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:05:31</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>5032-1876-9408</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="79"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">res_005_cov_combo_5___ResultPage</p>
+            <p class="text-sm">
+              <span>11:05:34 AM</span> / <span>52541.95 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">res_005_cov_combo_5___ResultPage</h5>
+                  <span class='badge badge-success'>4/3/2026 11:05:34 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:06:27 AM</span>
+                  <span class='badge badge-default'>52541.95 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=79</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="80">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:06:27</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2860-9531-7473</td></tr><tr><td>Submission Status</td><td>Success</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="81"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">uud_001_PLConstructionType_Log___UUD</p>
+            <p class="text-sm">
+              <span>11:06:30 AM</span> / <span>30284.53 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">uud_001_PLConstructionType_Log___UUD</h5>
+                  <span class='badge badge-success'>4/3/2026 11:06:30 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:07:00 AM</span>
+                  <span class='badge badge-default'>30284.53 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=81</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="82">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:07:00</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>2973-6104-5872</td></tr><tr><td>Submission Status</td><td>Declined</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/ViewPolicy?policyFriendlyId=2973-6104-5872&policyExternalId=&policyId=&search=Search target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="83"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">uud_002_PLConstructionType_Asbestos___UUD</p>
+            <p class="text-sm">
+              <span>11:07:03 AM</span> / <span>26783.32 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">uud_002_PLConstructionType_Asbestos___UUD</h5>
+                  <span class='badge badge-success'>4/3/2026 11:07:03 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:07:30 AM</span>
+                  <span class='badge badge-default'>26783.32 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=83</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="84">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:07:30</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>4193-2750-6821</td></tr><tr><td>Submission Status</td><td>Declined</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="85"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">uud_003_PLConstructionType_EFIS___UUD</p>
+            <p class="text-sm">
+              <span>11:07:33 AM</span> / <span>27133.56 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">uud_003_PLConstructionType_EFIS___UUD</h5>
+                  <span class='badge badge-success'>4/3/2026 11:07:33 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:08:00 AM</span>
+                  <span class='badge badge-default'>27133.56 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=85</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="86">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:08:00</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>0139-6785-2437</td></tr><tr><td>Submission Status</td><td>Declined</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="87"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">uud_004_PLNumberOfStories_ThreeHalf___UUD</p>
+            <p class="text-sm">
+              <span>11:08:05 AM</span> / <span>38424.49 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">uud_004_PLNumberOfStories_ThreeHalf___UUD</h5>
+                  <span class='badge badge-success'>4/3/2026 11:08:05 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:08:44 AM</span>
+                  <span class='badge badge-default'>38424.49 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=87</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="88">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:08:44</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>9214-3506-8750</td></tr><tr><td>Submission Status</td><td>Declined</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+        <li class="test-item" status="pass" test-id="89"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">uud_005_PLNumberOfStories_Four___UUD</p>
+            <p class="text-sm">
+              <span>11:08:46 AM</span> / <span>36416.62 ms</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+            <div class="detail-head">
+              <div class="p-v-10">
+                <div class="info">
+                  <h5 class="test-status text-pass">uud_005_PLNumberOfStories_Four___UUD</h5>
+                  <span class='badge badge-success'>4/3/2026 11:08:46 AM</span>
+                  <span class='badge badge-danger'>4/3/2026 11:09:23 AM</span>
+                  <span class='badge badge-default'>36416.62 ms</span>
+                  &middot; <span class='uri-anchor badge badge-default'>#test-id=89</span>
+                  <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+                  <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+                  <span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+                </div>
+              </div>
+            </div>
+
+
+  <div class="mt-4">
+  <div class="accordion">
+      <div class="card">
+        <div class="card-header">
+            <div class="card-toolbar node-info">
+            <ul class="list-inline d-none d-sm-block">
+              <li><span class="badge pass-bg log ">Pass</span></li>
+              <li title="Time taken"><span class='badge badge-default'>0.02</span></li>
+            </ul>
+          </div>
+          <div class="card-title">
+            <div class="node" id="90">Quote Submission Details</div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+            <div class="detail-body mt-4">
+
+
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>Apr 03, 2026 11:09:23</td>
+        <td>
+<table class='table table-sm'><tr><td>Environment</td><td>QA</td></tr><tr><td>Tenant</td><td>Unify</td></tr><tr><td>Sub-Tenant</td><td>MarketsLib</td></tr><tr><td>Carrier</td><td>HOA</td></tr><tr><td>LOB</td><td>PersonalHome</td></tr><tr><td>State</td><td>TX</td></tr><tr><td>Friendly Id</td><td>6394-2780-5124</td></tr><tr><td>Submission Status</td><td>Declined</td></tr><tr><td>Policy Viewer Url</td><td><a href=https://support-qa.boltqa.com/PolicyViewer/SearchPolicy target="_blank">Policy Viewer Url</a></td></tr></table>        </td>
+      </tr>
+  </tbody>
+</table>            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> 
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="test-content scrollable">
+    <div class="test-content-tools">
+      <ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+    </div>
+    <div class="test-content-detail"><div class="detail-body"></div></div>
+  </div>
+</div>
+
+     
+
+<div class="container-fluid p-4 view dashboard-view">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0">Started</p>
+          <h3>4/3/2026 10:38:23 AM</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0">Ended</p>
+          <h3>4/3/2026 11:09:24 AM</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0 text-pass">Tests Passed</p>
+          <h3>34</h3>
+      </div></div>
+    </div>
+    <div class="col-md-3">
+      <div class="card"><div class="card-body">
+          <p class="m-b-0 text-fail">Tests Failed</p>
+          <h3>7</h3>
+      </div></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Tests</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='parent-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'>
+            <b>34</b> tests passed
+            </small>
+          </div>
+          <div>
+            <small data-tooltip='0%'><b>7</b> tests failed, 
+            <b>0</b> skipped, <b data-tooltip='0%'>4</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Steps</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='child-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'><b>34</b> steps passed</small></div>
+          <div>
+            <small data-tooltip='0%'><b>7</b> steps failed, 
+            <b>0</b> skipped, <b data-tooltip='%'>4</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="card-title">Log events</h6>
+        </div>
+        <div class="card-body">
+          <div class="">
+            <canvas id='events-analysis' width='115' height='90'></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><small data-tooltip='0%'><b>34</b> events passed</small></div>
+          <div>
+            <small data-tooltip='0%'><b>7</b> events failed, 
+            <b data-tooltip='%'>26</b> others
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  </div>
+</div>
+<script>
+  var statusGroup = {
+    parentCount: 45,
+    childCount: 45,
+    grandChildCount: 0,
+    eventsCount: 67,
+
+passParent:34,failParent:7,warningParent:4,skipParent:0,    
+passChild:34,failChild:7,warningChild:4,skipChild:0,infoChild:0,    
+passGrandChild:0,failGrandChild:0,warningGrandChild:0,skipGrandChild:0,infoGrandChild:0,    
+passEvents:34,failEvents:7,warningEvents:4,skipEvents:0,infoEvents:22,  };
+</script>
+
+    </div>
+   </div>
+  </div>
+ </div>
+ <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c439bdbc7bade3d85af3b90e9e69c30ebc87445f/spark/js/spark-script.js"></script>
+<script type='text/javascript'></script>
+</body>
+</html>
